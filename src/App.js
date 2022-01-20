@@ -22,12 +22,16 @@ function App() {
     const data = await response.json();
 
     setPark(data);
-  }
+  };
+
+  useEffect(() => {
+    getPark();
+  }, [])
 
   return (
     <div className="App">
-     <Form />
-     <ParkDisplay />
+     <Form getPark={getPark}/>
+     <ParkDisplay park={park}/>
     </div>
   );
 }
