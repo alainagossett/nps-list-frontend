@@ -25,7 +25,7 @@ function App() {
   };
 
   useEffect(() => {
-    getPark();
+    getPark('CO');
   }, [])
 
   return (
