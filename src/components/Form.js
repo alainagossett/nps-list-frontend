@@ -1,26 +1,39 @@
 import { useState } from 'react';
 
 const Form = (props) => {
-    const [formState, setFormState] = useState({
-        searchTerm: ''
-    });
+   
+  const [parkState, setParkState] = useState(null);
+  const [inputState, setInputState] = useState("");
+  
+  const handleClick = async () => {
+    if(inputState.length < 2) return;
+    //if length is less than state abbreviation, return
+    const URL = 'http://localhost:3001/search?stateCode='
+    const response = await fetch(URL + inputState);
+    const data = await response.json();
+    setParkState(data);
+    setInputState("");
+  }
 
-    const handleChange = (event) => {
-        setFormState({ searchTerm: event.target.value });
-    };
-
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        props.getPark(formState.searchTerm);
-    };
+  const handleChange = (state) => {
+      setInputState(state.target.value);
+  }
 
     return (
+        <>
         <div>
-            <form onSubmit={handleSubmit}>
-                <input type="text" value={formState.searchTerm} onChange={handleChange} />
-                <input type="submit" value="Submit" />
-            </form>
+                <input type="text" value={inputState} onChange={handleChange} />
+                <button onClick={handleClick}>Search</button>
         </div>
+            { parkState ?
+        <div>
+                <h1>{parkState.data.parkCode}</h1>
+
+        </div>
+        :
+        <h1>No Parks</h1>
+            }
+        </>
     )
 };
 

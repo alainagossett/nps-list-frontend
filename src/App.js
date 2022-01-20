@@ -10,33 +10,27 @@ import ParkDisplay from './components/ParkDisplay';
 
 
 function App() {
-
+  const [parkState, setParkState] = useState(null);
+  const [inputState, setInputState] = useState("");
   
-  const [park, setPark] = useState(null);
-
-  const getPark = async (state) => {
-    //make fetch request and store response
-    const response = await fetch(
-      `https://developer.nps.gov/api/v1/parks?stateCode=${state}&api_key=${API_KEY}`
-    );
+  const handleClick = async () => {
+    if(inputState.length < 2) return;
+    //if length is less than state abbreviation, return
+    const URL = 'http://localhost:3001/search?stateCode='
+    const response = await fetch(URL + inputState);
     const data = await response.json();
+    setParkState(data);
+    setInputState("");
+  }
 
-    setPark(data);
-  };
-
-  useEffect(() => {
-    getPark('CO');
-    const getParkNames = async () => {
-      const response = await fetch('URL/search?state=CO')
-      const data = await response.json()
-      console.log(data)
-    }
-  }, [])
+  const handleChange = (s) => {
+      setInputState(s.target.value);
+  }
 
   return (
     <div className="App">
-     <Form getPark={getPark}/>
-     <ParkDisplay park={park}/>
+      <Form />
+      <ParkDisplay />
     </div>
   );
 }
