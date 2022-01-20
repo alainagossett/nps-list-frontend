@@ -11,7 +11,7 @@ import ParkDisplay from './components/ParkDisplay';
 
 function App() {
 
-  const API_KEY = process.env.REACT_APP_API_KEY
+  
   const [park, setPark] = useState(null);
 
   const getPark = async (state) => {
@@ -26,6 +26,11 @@ function App() {
 
   useEffect(() => {
     getPark('CO');
+    const getParkNames = async () => {
+      const response = await fetch('URL/search?state=CO')
+      const data = await response.json()
+      console.log(data)
+    }
   }, [])
 
   return (
