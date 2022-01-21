@@ -7,6 +7,7 @@ import './index.css';
 //Import Components
 import Main from './components/Main';
 // import ParkDisplay from './components/ParkDisplay';
+import Header from './components/Header'
 
 
 function App() {
