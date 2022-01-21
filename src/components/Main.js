@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Link } from 'react-router-dom';
 
 import '../App.css';
 import Index from '../pages/Index';
@@ -27,7 +27,7 @@ const Main = (props) => {
 
     return (
         <>
-        <div>
+        <div className='search'>
                 <input 
                 type="text"
                 placeholder="AL"
@@ -40,13 +40,18 @@ const Main = (props) => {
             <ul className='parks'>
                 {
                     parkState.map((p) => {
-                        return <li key={p}><a href='/'>{p}</a></li>
+                        return <li key={p}>
+                            <Link to="/parks/:code">
+                            {p}
+                            </Link>
+                        </li>
+                        
                     }) 
                 }
             </ul>
         </div>
         :
-        <h1>No Parks</h1>
+        <h1>Search By State!</h1>
             }
         </>
     )

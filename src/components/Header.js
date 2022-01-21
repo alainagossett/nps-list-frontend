@@ -1,7 +1,14 @@
 import { Link } from 'react-router-dom'
 
 function Header(props) {
-    return <h1>Header Page</h1>
-}
+    return (
+        <nav className="nav">
+            <Link to="/parks">
+                <div>Park Planner</div>
+            </Link>
+
+        </nav>
+    )
+};
 
 export default Header

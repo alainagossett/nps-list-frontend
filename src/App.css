@@ -37,6 +37,10 @@
   }
 }
 
+.nav {
+  text-decoration: none;
+}
+
 .parks {
   list-style-type: none;
   font-size: 18pt;
