@@ -15,19 +15,23 @@ const Form = (props) => {
     setInputState("");
   }
 
-  const handleChange = (state) => {
-      setInputState(state.target.value);
+  const handleChange = (s) => {
+      setInputState(s.target.value);
   }
 
     return (
         <>
         <div>
-                <input type="text" value={inputState} onChange={handleChange} />
+                <input 
+                type="text"
+                placeholder="AL"
+                value={inputState}
+                onChange={handleChange} />
                 <button onClick={handleClick}>Search</button>
         </div>
             { parkState ?
         <div>
-                <h1>{parkState.data.parkCode}</h1>
+                <h1>{parkState.data[0].parkCode}</h1>
 
         </div>
         :

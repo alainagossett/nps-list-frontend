@@ -3,7 +3,7 @@ const ParkDisplay = (props) => {
     const loaded = () => {
         return (
             <>
-            <h1>{props.park.fullName}</h1>
+            <h1>Park Page</h1>
             </>
         )
     }
