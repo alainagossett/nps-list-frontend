@@ -17,6 +17,7 @@ const Main = (props) => {
     const response = await fetch(URL + inputState);
     const data = await response.json();
     setParkState(data);
+    // console.log(parkState)
     setInputState("");
   }
 
@@ -36,8 +37,13 @@ const Main = (props) => {
         </div>
             { parkState ?
         <div className='parkList'>
-                <h1>{parkState}</h1>
-
+            <ul className='parks'>
+                {
+                    parkState.map((p) => {
+                        return <li key={p}><a href='/'>{p}</a></li>
+                    }) 
+                }
+            </ul>
         </div>
         :
         <h1>No Parks</h1>
