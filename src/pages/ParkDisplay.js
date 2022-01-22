@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 
+import { Link } from 'react-router-dom';
+
 import '../App.css';
 
 
@@ -29,7 +31,8 @@ const ParkDisplay = (props) => {
             <h1>{park.data[0].fullName}</h1>
             <p>{park.data[0].description}</p>
             <img className="parkImg" src={park.data[0].images[0].url} alt={park.data[0].fullName} />
-            <p>Explore places in this park</p>
+            <br/>
+            <Link to={`/places/${park.data[0].parkCode}`}>Explore places in this park</Link>
             </>
         )
     }
