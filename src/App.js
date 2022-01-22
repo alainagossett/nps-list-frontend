@@ -24,7 +24,7 @@ function App() {
       <Route exact path='/parks'>
       <Main />
       </Route>
-    <Route path='/parks/:code' render={(props) => <Show {...props}/>} />
+    <Route path='/places/:code' render={(props) => <Show {...props}/>} />
       </Switch>
       {/* <ParkDisplay /> */}
     </div>
