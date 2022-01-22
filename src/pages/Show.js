@@ -26,7 +26,7 @@ async function lookupPlaces() {
     const loaded = () => {
         return (
             <div className='placesShow'>
-                <h1>Place Details</h1>
+                <h1>Places to see in this park</h1>
                 {
                     place.total!=="0" ? 
                     <div>
@@ -34,9 +34,9 @@ async function lookupPlaces() {
                         place.data.map((p) => {
                             return (
                             <div>
-                            <h2 key={p.title}>{p.title}</h2>
+                            <a href={p.url} target="_blank"><h2 key={p.title}>{p.title}</h2></a>
                             <img className='placeImg' src={p.images[0].url} alt={p.title} />
-                            <p key={p}>{p.audioDescription}</p>
+                            <p key={p}>{p.bodyText}</p>
                             </div>
                             )
                         })
