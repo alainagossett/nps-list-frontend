@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { Route, Switch, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import '../App.css';
-import Index from '../pages/Index';
+// import Index from '../pages/Index';
 import Show from '../pages/Show';
 
 const Main = (props) => {
@@ -39,13 +39,16 @@ const Main = (props) => {
         <div className='parkList'>
             <ul className='parks'>
                 {
-                    parkState.map((p) => {
-                        return <li key={p}>
-                            <Link to="/parks/:code">
-                            {p}
+                    //Iterate over list of park codes and generate a list of Link components
+                    parkState.map((pl) => {
+                        return <li key={pl}>
+                            <Link to={`/parks/${pl.code}`}
+                                //render a page component to show the park details
+                               
+                            >
+                            {`${pl.name} (${pl.code})`}
                             </Link>
                         </li>
-                        
                     }) 
                 }
             </ul>
