@@ -18,11 +18,28 @@ async function lookupPark() {
     useEffect(() => {
         lookupPark();
     }, [])
-    return (
-        <div className='parkShow'>
-            <h1>{park.data[0].bodyText}</h1>
-        </div>
-    )
+
+    const loading = () => <h1>Loading...</h1>
+
+    const loaded = () => {
+        return (
+            <div className='parkShow'>
+                <h1>Park Details</h1>
+                {
+                    park.total!=="0" ? 
+                    <div>
+                    <h1>{park.data[0].title}</h1>
+                    <h2>{park.data[0].bodyText}</h2>
+                    </div>
+                    :
+                    <p>No park details to display at this time</p>
+                }
+
+            </div>
+        )
+    }
+
+    return park ? loaded() : loading();
 }
 
 export default Show;

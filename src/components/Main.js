@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import '../App.css';
 // import Index from '../pages/Index';
-import Show from '../pages/Show';
+// import Show from '../pages/Show';
 
 const Main = (props) => {
    
