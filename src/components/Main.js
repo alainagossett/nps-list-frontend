@@ -33,6 +33,22 @@ const Main = (props) => {
         setFavorite(data);
         }
 
+    const addFavorite = async(favorite) => {
+        const response = await fetch(favoriteUrl, {
+            method: "POST",
+            headers: {
+                "Content-Type": "Application/json"
+            },
+            body: {
+                "userId": "xxx9999",
+                "parkCode": `${favorite.data[0].parkCode}`,
+                "notes": "Added by app"
+            }
+        });
+        const favorites = await response.json();
+            setFavorite(favorites)
+        
+    };
     
     const statesList=["AK","AL","AZ","AR","CA","CO","CT","DE","FL","GA","HI","ID","IL","IN","IA","KS","KY",
       "LA","ME","MD","MA","MI","MN","MS","MO","MT","NE","NV","NH","NJ","NM","NY","NC","ND","OH","OK","OR",

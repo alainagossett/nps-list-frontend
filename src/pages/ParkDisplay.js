@@ -19,20 +19,13 @@ const ParkDisplay = (props) => {
         console.log("Park Details:", data)
         setPark(data);
         }
-///////////////////////////    
-//     const [favorite, setFavorite] = useState(null)
-//     const favoriteUrl = 'http://localhost:3001/favorites/'
-//     //Retrieve favorite parks
-//     async function getFavoriteParks() {
-//         const response = await fetch(favoriteUrl, {
-//             method: 'GET',
-//         })
 
-//         const data = await response.json()
-//         setFavorite(data);
-// }
+    const [favorite, setFavorite] = useState(null)
+    const handleAdd = (event) => {
+    event.preventDefault();
+    props.addFavorite(favorite);
+}
 
-//////////////////////////
         useEffect(() => {
             lookupPark();
         }, [])
@@ -47,6 +40,17 @@ const ParkDisplay = (props) => {
             <img className="parkImg" src={park.data[0].images[0].url} alt={park.data[0].fullName} />
             <br/>
             <Link to={`/places/${park.data[0].parkCode}`}>Explore places in this park</Link>
+            <br/>
+            <br/>
+            <form onSubmit={handleAdd}>
+                <input 
+                type="text"
+                name="parkCode"
+                value={park.data[0].parkCode}
+                disabled="true"
+                />
+            </form>
+            <input type="submit" value="Add to Favorites"/>
             </>
         )
     }

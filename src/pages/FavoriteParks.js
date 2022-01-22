@@ -1,5 +1,22 @@
+import { useState } from "react"
+
 const FavoriteParks = (props) => {
-   return <h1>Favorites page</h1>
+    //GET Favorite Parks
+    const [favorite, setFavorite] = useState(null)
+    const favoriteUrl = 'http://localhost:3001/favorites/'
+    //Retrieve favorite parks
+    const getFavoriteParks = async () => {
+        const response = await fetch(favoriteUrl)
+        const data = await response.json()
+        setFavorite(data);
+        }
+   return (
+       <>
+       <div>
+           <p>This is the Favorites Page</p>
+       </div>
+       </>
+   )
 }
 
 export default FavoriteParks;
