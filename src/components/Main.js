@@ -42,7 +42,7 @@ const Main = (props) => {
                     //Iterate over list of park codes and generate a list of Link components
                     parkState.map((pl) => {
                         return <li key={pl.code}>
-                            <Link to={`/places/${pl.code}`}
+                            <Link to={`/parks/${pl.code}`}
                                 //render a page component to show the park details
                                
                             >

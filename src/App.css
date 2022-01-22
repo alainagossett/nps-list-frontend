@@ -52,7 +52,7 @@
   color: #4B5E26;
 }
 
-.placeImg {
+.placeImg, .parkImg {
   height: 50%;
   width: 50%;
 }

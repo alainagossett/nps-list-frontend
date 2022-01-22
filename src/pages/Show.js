@@ -4,7 +4,7 @@ import '../App.css';
 
 function Show(props) {
 
-    const [park, setPark] = useState(null);
+    const [place, setPlace] = useState(null);
     //invoke useState to store the parkCode value
     const parkCode = props.match.params.code;
     const URL = 'http://localhost:3001/places/'
@@ -14,7 +14,7 @@ async function lookupPlaces() {
     const details = await fetch(URL + parkCode)
     const data = await details.json();
     console.log("Place Details:", data)
-    setPark(data);
+    setPlace(data);
     }
 
     useEffect(() => {
@@ -26,12 +26,12 @@ async function lookupPlaces() {
     const loaded = () => {
         return (
             <div className='placesShow'>
-                <h1>Park Details</h1>
+                <h1>Place Details</h1>
                 {
-                    park.total!=="0" ? 
+                    place.total!=="0" ? 
                     <div>
                         {
-                        park.data.map((p) => {
+                        place.data.map((p) => {
                             return (
                             <div>
                             <h2 key={p.title}>{p.title}</h2>
@@ -50,7 +50,7 @@ async function lookupPlaces() {
         )
     }
 
-    return park ? loaded() : loading();
+    return place ? loaded() : loading();
 }
 
 export default Show;
