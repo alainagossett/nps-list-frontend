@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 import '../App.css';
 
@@ -26,6 +27,7 @@ async function lookupPlaces() {
     const loaded = () => {
         return (
             <div className='placesShow'>
+                <Link to={`/parks/${props.match.params.code}`}>Back</Link> 
                 <h1>Places to see in this park</h1>
                 {
                     place.total!=="0" ? 
@@ -36,7 +38,7 @@ async function lookupPlaces() {
                             <div>
                             <a href={p.url} target="_blank"><h2 key={p.title}>{p.title}</h2></a>
                             <img className='placeImg' src={p.images[0].url} alt={p.title} />
-                            <p key={p}>{p.bodyText}</p>
+                            <p key={p}>{p.audioDescription}</p>
                             </div>
                             )
                         })
