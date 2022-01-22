@@ -13,6 +13,7 @@ import Header from './components/Header'
 //Import Pages
 import PlaceDisplay from './pages/PlaceDisplay.js';
 import ParkDisplay from './pages/ParkDisplay';
+import FavoriteParks from './pages/FavoriteParks';
 
 
 function App() {
@@ -25,7 +26,10 @@ function App() {
       <Main />
       </Route>
       <Route path='/parks/:code' render={(props) => <ParkDisplay {...props}/>} />
-    <Route path='/places/:code' render={(props) => <PlaceDisplay {...props}/>} />
+      <Route path='/places/:code' render={(props) => <PlaceDisplay {...props}/>} />
+      <Route exact path='/favorites'>
+        <FavoriteParks />
+      </Route>
       </Switch>
       {/* <ParkDisplay /> */}
     </div>

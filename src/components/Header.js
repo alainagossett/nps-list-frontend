@@ -6,7 +6,9 @@ function Header(props) {
             <Link to="/parks">
                 <div>Park Planner</div>
             </Link>
-
+            <Link to="/favorites">
+                <div>Favorites</div>
+            </Link>
         </nav>
     )
 };

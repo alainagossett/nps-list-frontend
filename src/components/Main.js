@@ -1,7 +1,8 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Link, Route, Switch } from 'react-router-dom';
 
 import '../App.css';
+import FavoriteParks from '../pages/FavoriteParks';
 
 const Main = (props) => {
    
@@ -21,13 +22,30 @@ const Main = (props) => {
     const handleChange = (s) => {
         setInputState(s.target.value);
     }
+
+    //GET Favorite Parks
+    const [favorite, setFavorite] = useState(null)
+    const favoriteUrl = 'http://localhost:3001/favorites/'
+    //Retrieve favorite parks
+    const getFavoriteParks = async () => {
+        const response = await fetch(favoriteUrl)
+        const data = await response.json()
+        setFavorite(data);
+        }
+
     
     const statesList=["AK","AL","AZ","AR","CA","CO","CT","DE","FL","GA","HI","ID","IL","IN","IA","KS","KY",
       "LA","ME","MD","MA","MI","MN","MS","MO","MT","NE","NV","NH","NJ","NM","NY","NC","ND","OH","OK","OR",
       "PA","RI","SC","SD","TN","TX","UT","VT","VA","WA","WV","WI","WY"]
 
+     useEffect(() => getFavoriteParks(), []); 
     return (
         <>
+        <Switch>
+            <Route exact path='/favorites'>
+                <FavoriteParks favorite={favorite} />
+            </Route>
+        </Switch>
         <div className='search'>
             <select name="stateSel" value={inputState} onChange={handleChange}>
                 <option value="">Select State</option>

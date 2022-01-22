@@ -1,24 +1,38 @@
 import { useState, useEffect } from 'react';
 
-import { Link } from 'react-router-dom';
+import { Link, Route } from 'react-router-dom';
 
 import '../App.css';
+import FavoriteParks from './FavoriteParks';
 
 
 const ParkDisplay = (props) => {
     const [park, setPark] = useState(null);
     //invoke useState to store the parkCode value
     const parkCode = props.match.params.code;
-    const URL = 'http://localhost:3001/parks/'
+    const parkUrl = 'http://localhost:3001/parks/'
 
     async function lookupPark() {
         console.log(parkCode)
-        const details = await fetch(URL + parkCode)
+        const details = await fetch(parkUrl + parkCode)
         const data = await details.json();
         console.log("Park Details:", data)
         setPark(data);
         }
-    
+///////////////////////////    
+//     const [favorite, setFavorite] = useState(null)
+//     const favoriteUrl = 'http://localhost:3001/favorites/'
+//     //Retrieve favorite parks
+//     async function getFavoriteParks() {
+//         const response = await fetch(favoriteUrl, {
+//             method: 'GET',
+//         })
+
+//         const data = await response.json()
+//         setFavorite(data);
+// }
+
+//////////////////////////
         useEffect(() => {
             lookupPark();
         }, [])
