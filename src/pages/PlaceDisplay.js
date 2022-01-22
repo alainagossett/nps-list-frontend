@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import '../App.css';
 
-function Show(props) {
+function PlaceDisplay(props) {
 
     const [place, setPlace] = useState(null);
     //invoke useState to store the parkCode value
@@ -55,4 +55,4 @@ async function lookupPlaces() {
     return place ? loaded() : loading();
 }
 
-export default Show;
+export default PlaceDisplay;

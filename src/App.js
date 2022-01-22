@@ -11,7 +11,7 @@ import Main from './components/Main';
 import Header from './components/Header'
 
 //Import Pages
-import Show from './pages/Show.js';
+import PlaceDisplay from './pages/PlaceDisplay.js';
 import ParkDisplay from './pages/ParkDisplay';
 
 
@@ -25,7 +25,7 @@ function App() {
       <Main />
       </Route>
       <Route path='/parks/:code' render={(props) => <ParkDisplay {...props}/>} />
-    <Route path='/places/:code' render={(props) => <Show {...props}/>} />
+    <Route path='/places/:code' render={(props) => <PlaceDisplay {...props}/>} />
       </Switch>
       {/* <ParkDisplay /> */}
     </div>
