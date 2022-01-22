@@ -1,7 +1,6 @@
 import React from 'react'
 
 import { Route, Switch } from 'react-router-dom';
-// import { useState, useEffect } from 'react';
 
 import './App.css';
 import './styles.scss';
@@ -22,8 +21,8 @@ function App() {
     <div className="App">
       <Header />
       <Switch>
-      <Route>
-      <Main exact path='/parks'/>
+      <Route exact path='/parks'>
+      <Main />
       </Route>
     <Route path='/parks/:code' render={(props) => <Show {...props}/>} />
       </Switch>
