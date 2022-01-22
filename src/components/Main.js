@@ -2,8 +2,6 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import '../App.css';
-// import Index from '../pages/Index';
-// import Show from '../pages/Show';
 
 const Main = (props) => {
    
@@ -17,7 +15,6 @@ const Main = (props) => {
       const response = await fetch(URL + inputState);
       const data = await response.json();
       setParkState(data);
-      // console.log(parkState)
       setInputState("");
     }
     
@@ -28,6 +25,7 @@ const Main = (props) => {
     const statesList=["AK","AL","AZ","AR","CA","CO","CT","DE","FL","GA","HI","ID","IL","IN","IA","KS","KY",
       "LA","ME","MD","MA","MI","MN","MS","MO","MT","NE","NV","NH","NJ","NM","NY","NC","ND","OH","OK","OR",
       "PA","RI","SC","SD","TN","TX","UT","VT","VA","WA","WV","WI","WY"]
+
     return (
         <>
         <div className='search'>
@@ -39,11 +37,6 @@ const Main = (props) => {
                     })
                 }
             </select>
-                {/* <input 
-                type="text"
-                placeholder="AL"
-                value={inputState}
-                onChange={handleChange} /> */}
                 <button onClick={handleClick}>Search</button>
         </div>
             { parkState ?
