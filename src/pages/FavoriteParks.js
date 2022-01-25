@@ -1,22 +1,20 @@
-import { useState } from "react"
+import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const FavoriteParks = (props) => {
-    //GET Favorite Parks
-    const [favorite, setFavorite] = useState(null)
-    const favoriteUrl = 'http://localhost:3001/favorites/'
-    //Retrieve favorite parks
-    const getFavoriteParks = async () => {
-        const response = await fetch(favoriteUrl)
-        const data = await response.json()
-        setFavorite(data);
-        }
-   return (
-       <>
-       <div>
-           <p>This is the Favorites Page</p>
-       </div>
-       </>
-   )
+   const loaded = () => {
+       return props.favorite.map((fave) => (
+           <div key={fave._id}>
+               <h1>{fave.parkCode}</h1>
+           </div>
+       ))
+   }
+
+   const loading = () => {
+       return <h1>Loading...</h1>
+   }
+
+   return props.favorite ? loaded() : loading()
 }
 
 export default FavoriteParks;

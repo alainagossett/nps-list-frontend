@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-
 import { Link, Route } from 'react-router-dom';
 
 import '../App.css';
@@ -20,11 +19,46 @@ const ParkDisplay = (props) => {
         setPark(data);
         }
 
-    const [favorite, setFavorite] = useState(null)
-    const handleAdd = (event) => {
-    event.preventDefault();
-    props.addFavorite(favorite);
-}
+        const [favorite, setFavorite] = useState({
+            userId: "",
+            parkCode: "",
+            notes: "",
+        })
+        const favoriteUrl = 'http://localhost:3001/favorites/'
+        //Retrieve favorite parks
+        const getFavoriteParks = async () => {
+            const response = await fetch(favoriteUrl)
+            const data = await response.json()
+            setFavorite(data);
+            }
+
+        const createFavorite = async (fave) => {
+            await fetch(favoriteUrl, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "Application/json",
+                },
+                body: JSON.stringify(fave),
+            })
+            getFavoriteParks()
+        }
+
+        const handleChange = (event) => {
+            setFavorite((prevState) => ({
+                ...prevState,
+                [event.target.name]: event.target.value,
+            }))
+        }
+
+        const handleSubmit = (event) => {
+            event.preventDefault()
+            props.createFavorite(favorite)
+            setFavorite({
+            userId: "",
+            parkCode: "",
+            notes: "",
+            })
+        }
 
         useEffect(() => {
             lookupPark();
@@ -42,15 +76,30 @@ const ParkDisplay = (props) => {
             <Link to={`/places/${park.data[0].parkCode}`}>Explore places in this park</Link>
             <br/>
             <br/>
-            <form onSubmit={handleAdd}>
-                <input 
-                type="text"
-                name="parkCode"
-                value={park.data[0].parkCode}
-                disabled="true"
-                />
-            </form>
-            <input type="submit" value="Add to Favorites"/>
+           <form onSubmit={handleSubmit}>
+               <input 
+               type="text"
+               value={favorite.userId}
+               name="userId"
+               placeholder="user id"
+               onChange={handleChange}
+               />
+               <input 
+               type="text"
+               value={favorite.parkCode}
+               name="parkCode"
+               placeholder={park.data[0].parkCode}
+               onChange={handleChange}
+               />
+               <input 
+               type="text"
+               value={favorite.notes}
+               name="notes"
+               placeholder="enter some notes"
+               onChange={handleChange}
+               />
+               <input type="submit" value="Add to Favorites" />
+           </form>
             </>
         )
     }

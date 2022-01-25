@@ -3,6 +3,7 @@ import { Link, Route, Switch } from 'react-router-dom';
 
 import '../App.css';
 import FavoriteParks from '../pages/FavoriteParks';
+import ParkDisplay from '../pages/ParkDisplay';
 
 const Main = (props) => {
    
@@ -33,22 +34,16 @@ const Main = (props) => {
         setFavorite(data);
         }
 
-    const addFavorite = async(favorite) => {
-        const response = await fetch(favoriteUrl, {
-            method: "POST",
-            headers: {
-                "Content-Type": "Application/json"
-            },
-            body: {
-                "userId": "xxx9999",
-                "parkCode": `${favorite.data[0].parkCode}`,
-                "notes": "Added by app"
-            }
-        });
-        const favorites = await response.json();
-            setFavorite(favorites)
-        
-    };
+   const createFavorite = async (fave) => {
+       await fetch(URL, {
+           method: "POST",
+           headers: {
+               "Content-Type": "Application/json",
+           },
+           body: JSON.stringify(fave),
+       })
+       getFavoriteParks()
+   }
     
     const statesList=["AK","AL","AZ","AR","CA","CO","CT","DE","FL","GA","HI","ID","IL","IN","IA","KS","KY",
       "LA","ME","MD","MA","MI","MN","MS","MO","MT","NE","NV","NH","NJ","NM","NY","NC","ND","OH","OK","OR",
@@ -56,11 +51,14 @@ const Main = (props) => {
 
      useEffect(() => getFavoriteParks(), []); 
     return (
-        <>
+        <main>
         <Switch>
             <Route exact path='/favorites'>
-                <FavoriteParks favorite={favorite} />
+                <ParkDisplay favorite={favorite} createFavorite={createFavorite}/>
             </Route>
+            <Route path='/favorites/:id' render={(p) => (
+                <FavoriteParks {...p} />
+            )} />
         </Switch>
         <div className='search'>
             <select name="stateSel" value={inputState} onChange={handleChange}>
@@ -94,7 +92,7 @@ const Main = (props) => {
         :
         <h1>Search By State!</h1>
             }
-        </>
+        </main>
     )
 };
 
