@@ -52,16 +52,18 @@ const ParkDisplay = (props) => {
 
         const handleSubmit = (event) => {
             event.preventDefault()
-            props.createFavorite(favorite)
-            setFavorite({
-            userId: "",
-            parkCode: "",
-            notes: "",
-            })
+            console.log(event)
+            // props.createFavorite(favorite)
+            // setFavorite({
+            // userId: "",
+            // parkCode: "",
+            // notes: "",
+            // })
         }
 
         useEffect(() => {
             lookupPark();
+            getFavoriteParks();
         }, [])
 
         const loading = () => <h1>Loading...</h1>
@@ -76,7 +78,8 @@ const ParkDisplay = (props) => {
             <Link to={`/places/${park.data[0].parkCode}`}>Explore places in this park</Link>
             <br/>
             <br/>
-           <form onSubmit={handleSubmit}>
+            <FavoriteParks parkName={park.data[0].fullName} parkDescr={park.data[0].description} parkCode={park.data[0].parkCode}/>
+           {/* <form onSubmit={handleSubmit}>
                <input 
                type="text"
                value={favorite.userId}
@@ -99,7 +102,7 @@ const ParkDisplay = (props) => {
                onChange={handleChange}
                />
                <input type="submit" value="Add to Favorites" />
-           </form>
+           </form> */}
             </>
         )
     }
