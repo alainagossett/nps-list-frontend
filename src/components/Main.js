@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link, Route, Switch } from 'react-router-dom';
+import { useEffect } from 'react/cjs/react.development';
 
 import '../App.css';
 import FavoriteParks from '../pages/FavoriteParks';
@@ -28,15 +29,29 @@ const Main = (props) => {
       "LA","ME","MD","MA","MI","MN","MS","MO","MT","NE","NV","NH","NJ","NM","NY","NC","ND","OH","OK","OR",
       "PA","RI","SC","SD","TN","TX","UT","VT","VA","WA","WV","WI","WY"]
 
+////////////////////////////////
+
+    const [favorite, setFavorite] = useState([])
+    const faveUrl = 'http://localhost:3001/favorites'
+    const getFavorites = async () => {
+        const faveResponse = await fetch(faveUrl)
+        const faveData = await faveResponse.json()
+        setFavorite(faveData)
+    }
+
+    useEffect(() => getFavorites(), [])
+    
+
     return (
         <main>
         <Switch>
-            <Route exact path='/favorites'>
+            <Route path='/favorites'>
                 <ParkDisplay />
             </Route>
-            <Route path='/favorites' render={(p) => (
+            <Route exact path='/favorites' render={(p) => (
                 <FavoriteParks 
-                {...p} 
+                // {...p}
+                favorite={favorite}
                 />
             )} />
         </Switch>
@@ -45,7 +60,7 @@ const Main = (props) => {
                 <option value="">Select State</option>
                 {
                     statesList.map((s) => {
-                       return <option value={s}>{s}</option>
+                       return <option key={s} value={s}>{s}</option>
                     })
                 }
             </select>

@@ -19,6 +19,7 @@ const ParkDisplay = (props) => {
         setPark(data);
         }
 
+/////////////////////////////////
         
         const [favorite, setFavorite] = useState({
             parkName: "",
@@ -27,12 +28,6 @@ const ParkDisplay = (props) => {
             notes: "",
         })
         const favoriteUrl = 'http://localhost:3001/favorites/'
-        //Retrieve favorite parks
-        const getFavoriteParks = async () => {
-            const response = await fetch(favoriteUrl)
-            const data = await response.json()
-            setFavorite(data);
-            }
 
         const createFavorite = async (fave) => {
             await fetch(favoriteUrl, {
@@ -42,7 +37,6 @@ const ParkDisplay = (props) => {
                 },
                 body: JSON.stringify(fave),
             })
-            getFavoriteParks()
         }
 
         const handleChange = (event) => {
@@ -54,19 +48,19 @@ const ParkDisplay = (props) => {
 
         const handleSubmit = (event) => {
             event.preventDefault()
-            console.log(props)
             createFavorite(favorite)
+            alert('Added to favorites!')
             setFavorite({
             parkName: "",
             parkDescr: "",
             parkCode: "",
             notes: "",
+            //TO DO: If parkCode exists in favorites, hide the input fields, replace with already added button?
             })
         }
 
         useEffect(() => {
             lookupPark();
-            getFavoriteParks();
         }, [])
 
         const loading = () => <h1>Loading...</h1>

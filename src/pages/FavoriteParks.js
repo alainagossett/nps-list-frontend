@@ -1,39 +1,31 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 
 const FavoriteParks = (props) => {
-//    const loaded = () => {
 
-    const [favorite, setFavorite] = useState(false)
+    const [favorite, setFavorite] = useState([])
+    const faveUrl = 'http://localhost:3001/favorites'
+    const getFavorites = async () => {
+        const faveResponse = await fetch(faveUrl)
+        const faveData = await faveResponse.json()
+        setFavorite(faveData)
+    }
 
-    useEffect(() => {
-        const variable = {
-            parkName: props.parkName,
-            parkDescr: props.parkDescr,
-            parkCode: props.parkCode
-        }
+    useEffect(() => getFavorites(), [])
 
-        axios.post('/favorites', variable)
-            .then(response => {
-                if(response.data.success) {
-                   setFavorite(response.data.favorite)
-                } else{
-                    alert("Failed to get Favorite")
-                }
-            })
-    }, [])
-       return (
-           <div>
-               <button>Add to Favorites {favorite}</button>
+   const loaded = () => {
+       return favorite.map((f) => (
+           <div key={f._id} className='favoriteList'>
+               <h1>{f.parkName}</h1>
            </div>
-       )
-//    }
+       ))
+   }
 
-//    const loading = () => {
-//        return <h1>Loading...</h1>
-//    }
+   const loading = () => {
+       console.log(favorite)
+       return <h1>Loading...</h1>
+   }
 
-//    return props.favorite ? loaded() : loading()
+   return favorite ? loaded() : loading()
 }
 
 export default FavoriteParks;
