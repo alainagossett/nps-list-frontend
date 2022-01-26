@@ -12,9 +12,9 @@ const ParkDisplay = (props) => {
     const parkUrl = 'http://localhost:3001/parks/'
 
     async function lookupPark() {
-        console.log(parkCode)
         const details = await fetch(parkUrl + parkCode)
         const data = await details.json();
+        console.log(parkCode)
         console.log("Park Details:", data)
         setPark(data);
         }
@@ -35,8 +35,14 @@ const ParkDisplay = (props) => {
                 headers: {
                     "Content-Type": "Application/json",
                 },
-                body: JSON.stringify(fave),
-            })
+                body: JSON.stringify(
+                    {
+                        "parkName": park.data[0].fullName,
+                        "parkDescr": park.data[0].description,
+                        "parkCode": park.data[0].parkCode,
+                    })
+                })
+                console.log(park)
         }
 
         const handleChange = (event) => {
@@ -46,19 +52,20 @@ const ParkDisplay = (props) => {
             }))
         }
 
-        const handleSubmit = (event) => {
+        const handleClick = (event) => {
             event.preventDefault()
             createFavorite(favorite)
             alert('Added to favorites!')
-            setFavorite({
-            parkName: "",
-            parkDescr: "",
-            parkCode: "",
-            notes: "",
-            //TO DO: If parkCode exists in favorites, hide the input fields, replace with already added button?
-            })
+            // setFavorite({
+            // parkName: "",
+            // parkDescr: "",
+            // parkCode: "",
+            // notes: "",
+            // //TO DO: If parkCode exists in favorites, hide the input fields, replace with already added button?
+            // })
         }
 
+        
         useEffect(() => {
             lookupPark();
         }, [])
@@ -77,37 +84,7 @@ const ParkDisplay = (props) => {
             <Link to={`/places/${parkInfo.parkCode}`}>Explore places in this park</Link>
             <br/>
             <br/>
-           <form onSubmit={handleSubmit}>
-               <input 
-               type="text"
-               value={favorite.parkName}
-               name="parkName"
-               placeholder="park name"
-               onChange={handleChange}
-               />
-               <input 
-               type="text"
-               value={favorite.parkDescr}
-               name="parkDescr"
-               placeholder="park description"
-               onChange={handleChange}
-               />
-               <input 
-               type="text"
-               value={favorite.parkCode}
-               name="parkCode"
-               placeholder={parkInfo.parkCode}
-               onChange={handleChange}
-               />
-               <input 
-               type="text"
-               value={favorite.notes}
-               name="notes"
-               placeholder="enter some notes"
-               onChange={handleChange}
-               />
-               <input type="submit" value="Add to Favorites" />
-           </form>
+          <button onClick={handleClick}>Add to Favorites</button>
             </>
         )
     }
