@@ -19,8 +19,10 @@ const ParkDisplay = (props) => {
         setPark(data);
         }
 
+        
         const [favorite, setFavorite] = useState({
-            userId: "",
+            parkName: "",
+            parkDescr: "",
             parkCode: "",
             notes: "",
         })
@@ -52,13 +54,14 @@ const ParkDisplay = (props) => {
 
         const handleSubmit = (event) => {
             event.preventDefault()
-            console.log(event)
-            // props.createFavorite(favorite)
-            // setFavorite({
-            // userId: "",
-            // parkCode: "",
-            // notes: "",
-            // })
+            console.log(props)
+            createFavorite(favorite)
+            setFavorite({
+            parkName: favorite.parkName,
+            parkDescr: "",
+            parkCode: "",
+            notes: "",
+            })
         }
 
         useEffect(() => {
@@ -69,29 +72,36 @@ const ParkDisplay = (props) => {
         const loading = () => <h1>Loading...</h1>
 
         const loaded = () => {
+            const parkInfo = park.data[0]
         return (
             <>
-            <h1>{park.data[0].fullName}</h1>
-            <p>{park.data[0].description}</p>
-            <img className="parkImg" src={park.data[0].images[0].url} alt={park.data[0].fullName} />
+            <h1>{parkInfo.fullName}</h1>
+            <p>{parkInfo.description}</p>
+            <img className="parkImg" src={parkInfo.images[0].url} alt={parkInfo.fullName} />
             <br/>
-            <Link to={`/places/${park.data[0].parkCode}`}>Explore places in this park</Link>
+            <Link to={`/places/${parkInfo.parkCode}`}>Explore places in this park</Link>
             <br/>
             <br/>
-            <FavoriteParks parkName={park.data[0].fullName} parkDescr={park.data[0].description} parkCode={park.data[0].parkCode}/>
-           {/* <form onSubmit={handleSubmit}>
+           <form onSubmit={handleSubmit}>
                <input 
                type="text"
-               value={favorite.userId}
-               name="userId"
-               placeholder="user id"
+               value={favorite.parkName}
+               name="parkName"
+               placeholder="park name"
+               onChange={handleChange}
+               />
+               <input 
+               type="text"
+               value={favorite.parkDescr}
+               name="parkDescr"
+               placeholder="park description"
                onChange={handleChange}
                />
                <input 
                type="text"
                value={favorite.parkCode}
                name="parkCode"
-               placeholder={park.data[0].parkCode}
+               placeholder={parkInfo.parkCode}
                onChange={handleChange}
                />
                <input 
@@ -102,7 +112,7 @@ const ParkDisplay = (props) => {
                onChange={handleChange}
                />
                <input type="submit" value="Add to Favorites" />
-           </form> */}
+           </form>
             </>
         )
     }
