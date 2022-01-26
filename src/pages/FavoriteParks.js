@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 const FavoriteParks = (props) => {
 
     const [favorite, setFavorite] = useState([])
-    const faveUrl = 'http://localhost:3001/favorites'
+    const faveUrl = 'http://localhost:3001/favorites/'
 
     //GET list of favorites
     const getFavorites = async () => {
@@ -32,10 +32,10 @@ const FavoriteParks = (props) => {
     //DELETE favorites
     const deleteFavorite = async (id) => {
         console.log(id)
-        // await fetch(faveUrl + favorite._id, {
-        //     method: "DELETE",
-        // })
-        // getFavorites()
+        await fetch(faveUrl + id, {
+            method: "DELETE",
+        })
+        getFavorites()
     }
 
     // const handleClick = () => {
