@@ -78,7 +78,7 @@ const ParkDisplay = (props) => {
             <>
             <h1>{parkInfo.fullName}</h1>
             <p>{parkInfo.description}</p>
-            <img className="parkImg" src={parkImg.url} alt={parkInfo.fullName} />
+            <img className="parkImg" src={parkInfo.images[0].url} alt={parkInfo.fullName} />
             <br/>
             <Link to={`/places/${parkInfo.parkCode}`}>Explore places in this park</Link>
             <br/>

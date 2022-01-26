@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Link, Route, Switch } from 'react-router-dom';
 
 import '../App.css';
@@ -23,41 +23,21 @@ const Main = (props) => {
     const handleChange = (s) => {
         setInputState(s.target.value);
     }
-
-    //GET Favorite Parks
-    const [favorite, setFavorite] = useState(null)
-    const favoriteUrl = 'http://localhost:3001/favorites/'
-    //Retrieve favorite parks
-    const getFavoriteParks = async () => {
-        const response = await fetch(favoriteUrl)
-        const data = await response.json()
-        setFavorite(data);
-        }
-
-   const createFavorite = async (fave) => {
-       await fetch(URL, {
-           method: "POST",
-           headers: {
-               "Content-Type": "Application/json",
-           },
-           body: JSON.stringify(fave),
-       })
-       getFavoriteParks()
-   }
     
     const statesList=["AK","AL","AZ","AR","CA","CO","CT","DE","FL","GA","HI","ID","IL","IN","IA","KS","KY",
       "LA","ME","MD","MA","MI","MN","MS","MO","MT","NE","NV","NH","NJ","NM","NY","NC","ND","OH","OK","OR",
       "PA","RI","SC","SD","TN","TX","UT","VT","VA","WA","WV","WI","WY"]
 
-     useEffect(() => getFavoriteParks(), []); 
     return (
         <main>
         <Switch>
             <Route exact path='/favorites'>
-                <ParkDisplay favorite={favorite} createFavorite={createFavorite}/>
+                <ParkDisplay />
             </Route>
-            <Route path='/favorites/:id' render={(p) => (
-                <FavoriteParks {...p} />
+            <Route path='/favorites' render={(p) => (
+                <FavoriteParks 
+                {...p} 
+                />
             )} />
         </Switch>
         <div className='search'>
