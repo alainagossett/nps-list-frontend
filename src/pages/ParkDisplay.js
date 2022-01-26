@@ -57,7 +57,7 @@ const ParkDisplay = (props) => {
             console.log(props)
             createFavorite(favorite)
             setFavorite({
-            parkName: favorite.parkName,
+            parkName: "",
             parkDescr: "",
             parkCode: "",
             notes: "",
@@ -73,11 +73,12 @@ const ParkDisplay = (props) => {
 
         const loaded = () => {
             const parkInfo = park.data[0]
+            const parkImg = parkInfo.images[Math.floor(Math.random()*parkInfo.images.length)]
         return (
             <>
             <h1>{parkInfo.fullName}</h1>
             <p>{parkInfo.description}</p>
-            <img className="parkImg" src={parkInfo.images[0].url} alt={parkInfo.fullName} />
+            <img className="parkImg" src={parkImg.url} alt={parkInfo.fullName} />
             <br/>
             <Link to={`/places/${parkInfo.parkCode}`}>Explore places in this park</Link>
             <br/>
