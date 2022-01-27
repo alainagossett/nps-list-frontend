@@ -23,7 +23,8 @@ GET PARK DETAILS TO DISPLAY ON PAGE
 /*/////////////////////////////////
 ADD PARK TO FAVORITES
 *//////////////////////////////////
-        
+        const [isDisabled, setIsDisabled] = useState(false)
+
         const [favorite, setFavorite] = useState({
             parkName: "",
             parkDescr: "",
@@ -51,16 +52,18 @@ ADD PARK TO FAVORITES
             event.preventDefault()
            await createFavorite(favorite)
             alert('Added to favorites!')
-            // //TO DO: If parkCode exists in favorites, hide the input fields, replace with already added button?
         }
         
+        //Checks if favorite already exists in favorite list
+        //Disables favorite button if park exists
         async function lookupFavorite() {
             const faves = await fetch(favoriteUrl)
             const faveData = await faves.json(faves)
-            // console.log("fave Data: ", faveData)
            const found = faveData.find((f) => parkCode === f.parkCode)
            if(found) {
-               console.log("found!")
+               setIsDisabled(true)
+           } else {
+               setIsDisabled(false)
            }
         }
         
@@ -73,7 +76,6 @@ ADD PARK TO FAVORITES
 
         const loaded = () => {
             const parkInfo = park.data[0]
-            const parkImg = parkInfo.images[Math.floor(Math.random()*parkInfo.images.length)]
         return (
             <>
             <h1>{parkInfo.fullName}</h1>
@@ -83,7 +85,7 @@ ADD PARK TO FAVORITES
             <Link to={`/places/${parkInfo.parkCode}`}>Explore places in this park</Link>
             <br/>
             <br/>
-          <button onClick={handleClick}>Add to Favorites</button>
+          <button disabled={isDisabled} onClick={handleClick}>Add to Favorites</button>
             </>
         )
     }

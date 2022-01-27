@@ -3,6 +3,8 @@
 // --------------------------
 $maincolor: #3f4e20;
 $contrastcolor: white;
+$disabledcolor: gray;
+$disabledtext: #5c5c5c;
 
 @mixin white-text-black-bg {
     color: $contrastcolor;
@@ -12,6 +14,11 @@ $contrastcolor: white;
 @mixin black-text-white-bg {
     color: $maincolor;
     background-color: $contrastcolor;
+}
+
+@mixin white-text-gray-bg {
+    color: $contrastcolor;
+    background-color: $disabledcolor
 }
 
 // --------------------------
@@ -59,6 +66,13 @@ div {
 
     &:hover{
         @include black-text-white-bg;
+    }
+
+    &:disabled{
+        background-color: gray;
+        &:hover{
+            @include white-text-gray-bg;
+        }
     }
   }
 }

@@ -12,22 +12,26 @@ const FavoriteParks = (props) => {
         setFavorite(faveData)
     }
 
+    
+
     //UPDATE favorites
-    // const updateFavorites = async (fave, id) => {
-    //     await fetch(faveUrl + id, {
-    //         method: "PUT",
-    //         headers: {
-    //             "Content-Type": "Application/json",
-    //         },
-    //         body: JSON.stringify(fave),
-    //     })
-    //     //update favorites list
-    //     getFavorites()
+    // const [ note, setNote ] = useState(null)
+
+    // const updateNotes = async (note, id) => {
+    //     const response = await fetch(faveUrl + id)
     // }
+    
+    // const handleChange = (event) => {
+    //     setNote({
+    //         ...note,
+    //         [event.target.name]: event.target.value
+    //     });
+    // };
 
-    // const handleUpdate
-
-    // const id = favorite.match.params.id;
+    // const handleSubmit = (event) => {
+    //     event.preventDefault();
+    //     props.updateNotes(note, id)
+    // }
 
     //DELETE favorites
     const deleteFavorite = async (id) => {
@@ -37,11 +41,6 @@ const FavoriteParks = (props) => {
         })
         getFavorites()
     }
-
-    // const handleClick = () => {
-    //     props.deleteFavorite(id);
-    //     props.history.push('/favorites');
-    // }
 
     useEffect(() => getFavorites(), [])
 
