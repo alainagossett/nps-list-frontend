@@ -31,9 +31,10 @@ ADD PARK TO FAVORITES
             parkCode: "",
             notes: "",
         })
-        const favoriteUrl = 'http://localhost:3001/favorites/'
+        // const favoriteUrl = 'http://localhost:3001/favorites/'
+        const favoriteUrl = 'https://favorite-parks-p3.herokuapp.com/favorites/'
 
-        const createFavorite = async (fave) => {
+        const createFavorite = async () => {
             await fetch(favoriteUrl, {
                 method: "POST",
                 headers: {

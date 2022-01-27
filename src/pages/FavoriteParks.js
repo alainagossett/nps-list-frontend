@@ -3,7 +3,8 @@ import React, { useEffect, useState } from 'react';
 const FavoriteParks = (props) => {
 
     const [favorite, setFavorite] = useState([])
-    const faveUrl = 'http://localhost:3001/favorites/'
+    // const faveUrl = 'http://localhost:3001/favorites/'
+    const faveUrl = 'https://favorite-parks-p3.herokuapp.com/favorites/'
 
     //GET list of favorites
     const getFavorites = async () => {

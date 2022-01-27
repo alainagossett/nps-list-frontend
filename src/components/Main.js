@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Link, Route, Switch } from 'react-router-dom';
-import { useEffect } from 'react/cjs/react.development';
 
 import '../App.css';
 import FavoriteParks from '../pages/FavoriteParks';
