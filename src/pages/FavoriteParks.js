@@ -50,7 +50,7 @@ const FavoriteParks = (props) => {
        return favorite.map((f) => (
            <div key={f._id} className='favoriteList'>
                <h2>{f.parkName}</h2>
-               <p>{f.notes}</p>
+               <p>{f.parkDescr}</p>
                <button id="delete" onClick={() => deleteFavorite(f._id)}>DELETE</button>
            </div>
        ))

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, Route } from 'react-router-dom';
 
 import '../App.css';
-import FavoriteParks from './FavoriteParks';
+// import FavoriteParks from './FavoriteParks';
 
 
 const ParkDisplay = (props) => {
@@ -56,13 +56,7 @@ const ParkDisplay = (props) => {
             event.preventDefault()
             createFavorite(favorite)
             alert('Added to favorites!')
-            // setFavorite({
-            // parkName: "",
-            // parkDescr: "",
-            // parkCode: "",
-            // notes: "",
             // //TO DO: If parkCode exists in favorites, hide the input fields, replace with already added button?
-            // })
         }
 
         
