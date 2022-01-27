@@ -17,8 +17,6 @@ GET PARK DETAILS TO DISPLAY ON PAGE
     async function lookupPark() {
         const details = await fetch(parkUrl + parkCode)
         const data = await details.json();
-        console.log(parkCode)
-        console.log("Park Details:", data)
         setPark(data);
         }
 
@@ -47,19 +45,28 @@ ADD PARK TO FAVORITES
                         "parkCode": park.data[0].parkCode,
                     })
                 })
-                console.log(park)
         }
 
-        const handleClick = (event) => {
+        const handleClick = async (event) => {
             event.preventDefault()
-            createFavorite(favorite)
+           await createFavorite(favorite)
             alert('Added to favorites!')
             // //TO DO: If parkCode exists in favorites, hide the input fields, replace with already added button?
         }
-
+        
+        async function lookupFavorite() {
+            const faves = await fetch(favoriteUrl)
+            const faveData = await faves.json(faves)
+            // console.log("fave Data: ", faveData)
+           const found = faveData.find((f) => parkCode === f.parkCode)
+           if(found) {
+               console.log("found!")
+           }
+        }
         
         useEffect(() => {
             lookupPark();
+            lookupFavorite()
         }, [])
 
         const loading = () => <h1>Loading...</h1>
