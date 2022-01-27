@@ -42,7 +42,6 @@ const FavoriteParks = (props) => {
 
     //DELETE favorites
     const deleteFavorite = async (id) => {
-        console.log(id)
         await fetch(faveUrl + id, {
             method: "DELETE",
         })
@@ -52,7 +51,6 @@ const FavoriteParks = (props) => {
     useEffect(() => getFavorites(), [])
 
    const loaded = () => {
-       console.log("favorite data: ", favorite)
        return favorite.map((f) => (
            <div key={f._id} className='favoriteList'>
                <h2>{f.parkName}</h2>
