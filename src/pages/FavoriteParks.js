@@ -18,7 +18,14 @@ const FavoriteParks = (props) => {
     // const [ note, setNote ] = useState(null)
 
     // const updateNotes = async (note, id) => {
-    //     const response = await fetch(faveUrl + id)
+    //     const response = await fetch(faveUrl + id, {
+    //         method: "PUT",
+    //         headers: {
+    //             "Content-Type": "Application/json",
+    //         },
+    //         body: JSON.stringify(note)
+    //     })
+    //     console.log(response)
     // }
     
     // const handleChange = (event) => {
@@ -30,7 +37,7 @@ const FavoriteParks = (props) => {
 
     // const handleSubmit = (event) => {
     //     event.preventDefault();
-    //     props.updateNotes(note, id)
+    //     updateNotes(note)
     // }
 
     //DELETE favorites
@@ -50,6 +57,17 @@ const FavoriteParks = (props) => {
            <div key={f._id} className='favoriteList'>
                <h2>{f.parkName}</h2>
                <p>{f.parkDescr}</p>
+               {/* <form onSubmit={() => handleSubmit(f._id)}>
+               <input 
+               type="text"
+               name="notes"
+               placeholder="add some notes"
+               value={f.notes}
+               onChange={handleChange}
+               />
+            <input type="submit" value="Add Note"/>
+               </form> */}
+
                <button id="delete" onClick={() => deleteFavorite(f._id)}>DELETE</button>
            </div>
        ))

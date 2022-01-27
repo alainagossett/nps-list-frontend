@@ -44,6 +44,7 @@ ADD PARK TO FAVORITES
                         "parkName": park.data[0].fullName,
                         "parkDescr": park.data[0].description,
                         "parkCode": park.data[0].parkCode,
+                        "notes": ""
                     })
                 })
         }
@@ -52,6 +53,7 @@ ADD PARK TO FAVORITES
             event.preventDefault()
            await createFavorite(favorite)
             alert('Added to favorites!')
+            setIsDisabled(true)
         }
         
         //Checks if favorite already exists in favorite list
