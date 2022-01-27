@@ -1,11 +1,14 @@
 import { useState, useEffect } from 'react';
-import { Link, Route } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import '../App.css';
-// import FavoriteParks from './FavoriteParks';
 
 
 const ParkDisplay = (props) => {
+
+/*/////////////////////////////////
+GET PARK DETAILS TO DISPLAY ON PAGE
+*//////////////////////////////////
     const [park, setPark] = useState(null);
     //invoke useState to store the parkCode value
     const parkCode = props.match.params.code;
@@ -19,7 +22,9 @@ const ParkDisplay = (props) => {
         setPark(data);
         }
 
-/////////////////////////////////
+/*/////////////////////////////////
+ADD PARK TO FAVORITES
+*//////////////////////////////////
         
         const [favorite, setFavorite] = useState({
             parkName: "",
@@ -43,13 +48,6 @@ const ParkDisplay = (props) => {
                     })
                 })
                 console.log(park)
-        }
-
-        const handleChange = (event) => {
-            setFavorite((prevState) => ({
-                ...prevState,
-                [event.target.name]: event.target.value,
-            }))
         }
 
         const handleClick = (event) => {
