@@ -16,30 +16,32 @@ const FavoriteParks = (props) => {
     
 
     //UPDATE favorites
-    // const [ note, setNote ] = useState(null)
+    const [ note, setNote ] = useState("")
 
-    // const updateNotes = async (note, id) => {
-    //     const response = await fetch(faveUrl + id, {
-    //         method: "PUT",
-    //         headers: {
-    //             "Content-Type": "Application/json",
-    //         },
-    //         body: JSON.stringify(note)
-    //     })
-    //     console.log(response)
-    // }
+    const updateNotes = async (note, id) => {
+        const response = await fetch(faveUrl + id, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "Application/json",
+            },
+            body: JSON.stringify(note)
+        })
+        const parkNote = await response.json();
+        setNote(parkNote);
+        console.log(response)
+    }
     
-    // const handleChange = (event) => {
-    //     setNote({
-    //         ...note,
-    //         [event.target.name]: event.target.value
-    //     });
-    // };
+    const handleChange = (event) => {
+        setNote({
+            ...note,
+            [event.target.name]: event.target.value
+        });
+    };
 
-    // const handleSubmit = (event) => {
-    //     event.preventDefault();
-    //     updateNotes(note)
-    // }
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        updateNotes(note)
+    }
 
     //DELETE favorites
     const deleteFavorite = async (id) => {
@@ -56,7 +58,7 @@ const FavoriteParks = (props) => {
            <div key={f._id} className='favoriteList'>
                <h2>{f.parkName}</h2>
                <p>{f.parkDescr}</p>
-               {/* <form onSubmit={() => handleSubmit(f._id)}>
+               <form onSubmit={() => handleSubmit(f._id)}>
                <input 
                type="text"
                name="notes"
@@ -65,7 +67,7 @@ const FavoriteParks = (props) => {
                onChange={handleChange}
                />
             <input type="submit" value="Add Note"/>
-               </form> */}
+               </form>
 
                <button id="delete" onClick={() => deleteFavorite(f._id)}>DELETE</button>
            </div>

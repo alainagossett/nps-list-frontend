@@ -13,7 +13,8 @@ const Main = (props) => {
   const handleClick = async () => {
       if(inputState.length < 2) return;
       //if length is less than state abbreviation, return
-      const URL = 'http://localhost:3001/parks/search?stateCode='
+    //   const URL = 'http://localhost:3001/parks/search?stateCode='
+    const URL = 'https://favorite-parks-p3.herokuapp.com/parks/search?stateCode='
       const response = await fetch(URL + inputState);
       const data = await response.json();
       setParkState(data);
