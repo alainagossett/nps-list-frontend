@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
-const FavoriteParks = (props) => {
+const FavoritesIndex = (props) => {
 
     const [favorite, setFavorite] = useState([])
     // const faveUrl = 'http://localhost:3001/favorites/'
@@ -62,7 +63,12 @@ const FavoriteParks = (props) => {
            <div key={f._id} className='favoriteList'>
                <h2>{f.parkName}</h2>
                <p>{f.parkDescr}</p>
-               
+               <Link to={`/favorites/${f._id}`}
+                                //render a page component to show the park details
+                               
+                            >
+                            Details
+                            </Link>
             <button className="deleteBtn" onClick={() => deleteFavorite(f._id)}>DELETE</button>
            </div>
        ))
@@ -76,4 +82,4 @@ const FavoriteParks = (props) => {
    return favorite ? loaded() : loading()
 }
 
-export default FavoriteParks;
+export default FavoritesIndex;

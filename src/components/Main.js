@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link, Route, Switch } from 'react-router-dom';
 
 import '../App.css';
-import FavoriteParks from '../pages/FavoriteParks';
+import FavoritesIndex from '../pages/FavoritesIndex';
 import ParkDisplay from '../pages/ParkDisplay';
 
 const Main = (props) => {
@@ -37,7 +37,7 @@ const Main = (props) => {
                 <ParkDisplay />
             </Route>
             <Route exact path='/favorites' render={(p) => (
-                <FavoriteParks />
+                <FavoritesIndex />
             )} />
         </Switch>
         <div className='search'>
