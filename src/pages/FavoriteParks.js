@@ -17,7 +17,9 @@ const FavoriteParks = (props) => {
     
 
     //UPDATE favorites
-    const [ note, setNote ] = useState("")
+    const [ note, setNote ] = useState({
+        value: ""
+    })
 
     const updateNotes = async (note, id) => {
         const response = await fetch(faveUrl + id, {
@@ -34,7 +36,7 @@ const FavoriteParks = (props) => {
     
     const handleChange = (event) => {
         setNote({
-            ...note,
+            // ...note,
             [event.target.name]: event.target.value
         });
     };
@@ -60,18 +62,8 @@ const FavoriteParks = (props) => {
            <div key={f._id} className='favoriteList'>
                <h2>{f.parkName}</h2>
                <p>{f.parkDescr}</p>
-               <form onSubmit={() => handleSubmit(f._id)}>
-               <input 
-               type="text"
-               name="notes"
-               placeholder="add some notes"
-               value={f.notes}
-               onChange={handleChange}
-               />
-            <input type="submit" value="Add Note"/>
-               </form>
-
-            <button className="deleteBtn" onClick={() => deleteFavorite(f._id)}>X</button>
+               
+            <button className="deleteBtn" onClick={() => deleteFavorite(f._id)}>DELETE</button>
            </div>
        ))
    }
