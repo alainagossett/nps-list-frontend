@@ -28,7 +28,7 @@ const FavoriteParks = (props) => {
         })
         const parkNote = await response.json();
         setNote(parkNote);
-        console.log(response)
+        console.log(parkNote)
     }
     
     const handleChange = (event) => {
@@ -41,6 +41,7 @@ const FavoriteParks = (props) => {
     const handleSubmit = (event) => {
         event.preventDefault();
         updateNotes(note)
+        console.log(note)
     }
 
     //DELETE favorites

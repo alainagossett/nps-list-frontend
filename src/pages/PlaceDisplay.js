@@ -8,7 +8,8 @@ function PlaceDisplay(props) {
     const [place, setPlace] = useState(null);
     //invoke useState to store the parkCode value
     const parkCode = props.match.params.code;
-    const URL = 'http://localhost:3001/places/'
+    // const URL = 'http://localhost:3001/places/'
+    const URL = 'https://favorite-parks-p3.herokuapp.com/places/'
 
 async function lookupPlaces() {
     console.log(parkCode)
@@ -35,10 +36,10 @@ async function lookupPlaces() {
                         {
                         place.data.map((p) => {
                             return (
-                            <div>
-                            <a href={p.url} target="_blank"><h2 key={p.title}>{p.title}</h2></a>
+                            <div key={p.id}>
+                            <a href={p.url} target="_blank"><h2>{p.title}</h2></a>
                             <img className='placeImg' src={p.images[0].url} alt={p.title} />
-                            <p key={p}>{p.audioDescription}</p>
+                            <p>{p.audioDescription}</p>
                             </div>
                             )
                         })
