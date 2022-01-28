@@ -5,13 +5,15 @@ $maincolor: #3f4e20;
 $contrastcolor: white;
 $disabledcolor: gray;
 $disabledtext: #5c5c5c;
+$deletecolor: #b41a1a;
+$deletetext: #000;
 
-@mixin white-text-black-bg {
+@mixin white-text-green-bg {
     color: $contrastcolor;
     background-color: $maincolor;
 }
 
-@mixin black-text-white-bg {
+@mixin green-text-white-bg {
     color: $maincolor;
     background-color: $contrastcolor;
 }
@@ -21,17 +23,22 @@ $disabledtext: #5c5c5c;
     background-color: $disabledcolor
 }
 
+@mixin black-text-red-bg {
+    color: $deletetext;
+    background-color: $deletecolor;
+}
+
 // --------------------------
 // Header
 // --------------------------
 
 nav {
-    @include white-text-black-bg;
+    @include white-text-green-bg;
     display: flex;
     justify-content: flex-start;
 
     a {
-        @include white-text-black-bg;
+        @include white-text-green-bg;
     
         div{
             margin: 10px;
@@ -48,24 +55,24 @@ nav {
 div {
   .search {
     input {
-      @include white-text-black-bg;
+      @include white-text-green-bg;
       padding: 10px;
       font-size: 1.1em;
       margin: 10px;
 
       &[type="submit"]:hover {
-        @include black-text-white-bg;
+        @include green-text-white-bg;
       }
     }
   }
   button {
-    @include white-text-black-bg;
+    @include white-text-green-bg;
     padding: 10px;
     font-size: 1.1em;
     margin: 10px;
 
     &:hover{
-        @include black-text-white-bg;
+        @include green-text-white-bg;
     }
 
     &:disabled{
@@ -75,4 +82,11 @@ div {
         }
     }
   }
+}
+
+.deleteBtn {
+    @include black-text-red-bg;
+    border-radius: 20%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
 }

@@ -11,6 +11,7 @@ const FavoriteParks = (props) => {
         const faveResponse = await fetch(faveUrl)
         const faveData = await faveResponse.json()
         setFavorite(faveData)
+        console.log(faveData)
     }
 
     
@@ -70,7 +71,7 @@ const FavoriteParks = (props) => {
             <input type="submit" value="Add Note"/>
                </form>
 
-               <button id="delete" onClick={() => deleteFavorite(f._id)}>DELETE</button>
+            <button className="deleteBtn" onClick={() => deleteFavorite(f._id)}>X</button>
            </div>
        ))
    }
