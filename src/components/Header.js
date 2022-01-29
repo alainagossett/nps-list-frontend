@@ -10,8 +10,12 @@ function Header(props) {
             <Link to="/favorites">
                 <div>Favorite</div>
             </Link>
-            <button onClick={login}>Login</button>
-            <button onClick={logout}>Logout</button>
+            {
+                props.user ? 
+                <button onClick={logout}>Logout</button>
+                :
+                <button onClick={login}>Login</button>
+            }
         </nav>
     )
 };

@@ -1,6 +1,6 @@
-import React from 'react'
-
+import React, { useState, useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
+import { auth } from './services/firebase';
 
 import './App.css';
 import './styles.scss';
@@ -19,9 +19,14 @@ import FavoritePark from './pages/FavoritePark';
 
 function App() {
 
+    const [user, setUser] = useState(null);
+    useEffect(() => {
+      auth.onAuthStateChanged(user => setUser(user));
+    }, []);
+
   return (
     <div className="App">
-      <Header />
+      <Header user={user} />
       <Switch>
       <Route exact path='/parks'>
       <Main />
