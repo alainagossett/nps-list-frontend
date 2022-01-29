@@ -53,9 +53,8 @@ ADD PARK TO FAVORITES
 
         const handleClick = async (event) => {
             event.preventDefault()
-           await createFavorite(favorite)
-            alert('Added to favorites!')
-            setIsDisabled(true)
+            await createFavorite(favorite)
+            alert ("Added to favorites!");
         }
         
         //Checks if favorite already exists in favorite list
@@ -89,7 +88,11 @@ ADD PARK TO FAVORITES
             <Link to={`/places/${parkInfo.parkCode}`}>Explore places in this park</Link>
             <br/>
             <br/>
-          <button disabled={isDisabled} onClick={handleClick}>Add to Favorites</button>
+            {
+                props.user &&
+                <button disabled={isDisabled} onClick={handleClick}>Add to Favorites</button>
+
+            }
             </>
         )
     }

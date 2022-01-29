@@ -29,14 +29,14 @@ function App() {
       <Header user={user} />
       <Switch>
       <Route exact path='/parks'>
-      <Main />
+      <Main user={user} />
       </Route>
-      <Route path='/parks/:code' render={(props) => <ParkDisplay {...props}/>} />
+      <Route path='/parks/:code' render={(props) => <ParkDisplay {...props} user={user} />} />
       <Route path='/places/:code' render={(props) => <PlaceDisplay {...props}/>} />
       <Route exact path='/favorites'>
         <FavoritesIndex />
       </Route>
-      <Route path='/favorites/:id' render={(props) => <FavoritePark {...props}/>} />
+      <Route path='/favorites/:id' render={(props) => <FavoritePark {...props} user={user}/>} />
       </Switch>
       {/* <ParkDisplay /> */}
     </div>

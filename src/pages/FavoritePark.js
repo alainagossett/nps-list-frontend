@@ -3,7 +3,8 @@ import { useState, useEffect } from "react";
 const FavoritePark = (props) => {
     
     const id = props.match.params.id;
-    const url = 'https://favorite-parks-p3.herokuapp.com/favorites/'
+    // const url = 'https://favorite-parks-p3.herokuapp.com/favorites/'
+    const url = 'http://localhost:3001/favorites/';
 
     //GET PARK DATA
     const [park, setPark] = useState([])
@@ -18,20 +19,13 @@ const FavoritePark = (props) => {
     //UPDATE PARK NOTE
         const [ note, setNote ] = useState("")
     
-        const updateNotes = async (note, id) => {
+        const updateNotes = async (note) => {
             const response = await fetch(url + id, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "Application/json",
                 },
-                // body: JSON.stringify(note)
-                body: JSON.stringify(
-                    {
-                        "parkName": park.parkName,
-                        "parkDescr": park.parkDescr,
-                        "parkCode": park.parkCode,
-                        "notes": note
-                    })
+                body: JSON.stringify(note)
             })
             const parkNote = await response.json();
             setNote(parkNote);

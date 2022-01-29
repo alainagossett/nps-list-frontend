@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link, Route, Switch } from 'react-router-dom';
+import { Link, Route, Switch, Redirect } from 'react-router-dom';
 
 import '../App.css';
 import FavoritesIndex from '../pages/FavoritesIndex';
@@ -34,10 +34,13 @@ const Main = (props) => {
         <main>
         <Switch>
             <Route path='/favorites'>
-                <ParkDisplay />
+                <ParkDisplay user={props.user}/>
             </Route>
             <Route exact path='/favorites' render={(p) => (
+                props.user ? 
                 <FavoritesIndex />
+                :
+                <Redirect to='/parks' />
             )} />
         </Switch>
         <div className='search'>
