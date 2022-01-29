@@ -18,35 +18,35 @@ const FavoritesIndex = (props) => {
     
 
     //UPDATE favorites
-    const [ note, setNote ] = useState({
-        value: ""
-    })
+    // const [ note, setNote ] = useState({
+    //     value: ""
+    // })
 
-    const updateNotes = async (note, id) => {
-        const response = await fetch(faveUrl + id, {
-            method: "PUT",
-            headers: {
-                "Content-Type": "Application/json",
-            },
-            body: JSON.stringify(note)
-        })
-        const parkNote = await response.json();
-        setNote(parkNote);
-        console.log(parkNote)
-    }
+    // const updateNotes = async (note, id) => {
+    //     const response = await fetch(faveUrl + id, {
+    //         method: "PUT",
+    //         headers: {
+    //             "Content-Type": "Application/json",
+    //         },
+    //         body: JSON.stringify(note)
+    //     })
+    //     const parkNote = await response.json();
+    //     setNote(parkNote);
+    //     console.log(parkNote)
+    // }
     
-    const handleChange = (event) => {
-        setNote({
-            // ...note,
-            [event.target.name]: event.target.value
-        });
-    };
+    // const handleChange = (event) => {
+    //     setNote({
+    //         // ...note,
+    //         [event.target.name]: event.target.value
+    //     });
+    // };
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        updateNotes(note)
-        console.log(note)
-    }
+    // const handleSubmit = (event) => {
+    //     event.preventDefault();
+    //     updateNotes(note)
+    //     console.log(note)
+    // }
 
     //DELETE favorites
     const deleteFavorite = async (id) => {
