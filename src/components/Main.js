@@ -9,6 +9,8 @@ const Main = (props) => {
    
   const [parkState, setParkState] = useState(null);
   const [inputState, setInputState] = useState("");
+
+  console.log("Props: ", props)
   
   const handleClick = async () => {
       if(inputState.length < 2) return;
@@ -37,7 +39,10 @@ const Main = (props) => {
                 <ParkDisplay user={props.user} />
             </Route>
             <Route exact path='/favorites' render={(p) => (
+                props.user ?
                 <FavoritesIndex user={props.user} />
+                :
+                <Redirect to='/parks' />
             )} />
         </Switch>
         <div className='search'>

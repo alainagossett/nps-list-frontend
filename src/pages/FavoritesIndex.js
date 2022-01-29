@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 const FavoritesIndex = (props) => {
 
     const [favorite, setFavorite] = useState([])
-    // const faveUrl = 'http://localhost:3001/favorites/'
     const faveUrl = 'https://favorite-parks-p3.herokuapp.com/favorites/'
 
     //GET list of favorites
@@ -12,7 +11,6 @@ const FavoritesIndex = (props) => {
             const faveResponse = await fetch(faveUrl)
             const faveData = await faveResponse.json()
             setFavorite(faveData)
-            console.log(faveData)
     }
 
     //DELETE favorites
@@ -26,19 +24,21 @@ const FavoritesIndex = (props) => {
     useEffect(() => getFavorites(), [])
 
    const loaded = () => {
-       return favorite.map((f) => (
-           <div key={f._id} className='favoriteList'>
-               <h2>{f.parkName}</h2>
-               <p>{f.notes}</p>
-               <Link to={`/favorites/${f._id}`}
-                                //render a page component to show the park details
-                               
-                            >
-                            Details
-                            </Link>
-            <button className="deleteBtn" onClick={() => deleteFavorite(f._id)}>DELETE</button>
-           </div>
-       ))
+       if (props.user) {
+           return favorite.map((f) => (
+               <div key={f._id} className='favoriteList'>
+                   <h2>{f.parkName}</h2>
+                   <p>{f.notes}</p>
+                   <Link to={`/favorites/${f._id}`} >
+                            //render a page component to show the park details
+                                Details
+                                </Link>
+                <button className="deleteBtn" onClick={() => deleteFavorite(f._id)}>DELETE</button>
+               </div>
+           ))
+       } else {
+           return <h1>You must be logged in to view favorites</h1>
+       }
    }
 
    const loading = () => {
