@@ -15,6 +15,9 @@ const firebaseConfig = {
 
   const auth = firebase.auth();
   const providerGoogle = new firebase.auth.GoogleAuthProvider();
+  providerGoogle.setCustomParameters({
+      prompt: 'select_account',
+  });
 //   const providerEmail = new firebase.auth.EmailAuthProvider();
 
   function login() {
