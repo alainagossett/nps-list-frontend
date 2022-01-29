@@ -34,7 +34,7 @@ function App() {
       <Route path='/parks/:code' render={(props) => <ParkDisplay {...props} user={user} />} />
       <Route path='/places/:code' render={(props) => <PlaceDisplay {...props}/>} />
       <Route exact path='/favorites'>
-        <FavoritesIndex />
+        <FavoritesIndex user={user}/>
       </Route>
       <Route path='/favorites/:id' render={(props) => <FavoritePark {...props} user={user}/>} />
       </Switch>

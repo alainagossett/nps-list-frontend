@@ -9,10 +9,10 @@ const FavoritesIndex = (props) => {
 
     //GET list of favorites
     const getFavorites = async () => {
-        const faveResponse = await fetch(faveUrl)
-        const faveData = await faveResponse.json()
-        setFavorite(faveData)
-        console.log(faveData)
+            const faveResponse = await fetch(faveUrl)
+            const faveData = await faveResponse.json()
+            setFavorite(faveData)
+            console.log(faveData)
     }
 
     //DELETE favorites
@@ -42,7 +42,6 @@ const FavoritesIndex = (props) => {
    }
 
    const loading = () => {
-       console.log(favorite)
        return <h1>Loading...</h1>
    }
 

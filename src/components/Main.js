@@ -34,13 +34,10 @@ const Main = (props) => {
         <main>
         <Switch>
             <Route path='/favorites'>
-                <ParkDisplay user={props.user}/>
+                <ParkDisplay user={props.user} />
             </Route>
             <Route exact path='/favorites' render={(p) => (
-                props.user ? 
-                <FavoritesIndex />
-                :
-                <Redirect to='/parks' />
+                <FavoritesIndex user={props.user} />
             )} />
         </Switch>
         <div className='search'>
