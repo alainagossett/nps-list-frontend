@@ -32,14 +32,17 @@ ADD PARK TO FAVORITES
             parkCode: "",
             notes: "",
         })
-        // const favoriteUrl = 'http://localhost:3001/favorites/'
-        const favoriteUrl = 'https://favorite-parks-p3.herokuapp.com/favorites/'
+        const favoriteUrl = 'http://localhost:3001/favorites/'
+        // const favoriteUrl = 'https://favorite-parks-p3.herokuapp.com/favorites/'
 
         const createFavorite = async () => {
+            if(!props.user) return;
+            const token = await props.user.getIdToken();
             await fetch(favoriteUrl, {
-                method: "POST",
+                method: 'POST',
                 headers: {
-                    "Content-Type": "Application/json",
+                    "Content-Type": 'Application/json',
+                    'Authorization': 'Bearer ' + token
                 },
                 body: JSON.stringify(
                     {
@@ -54,7 +57,7 @@ ADD PARK TO FAVORITES
         const handleClick = async (event) => {
             event.preventDefault()
             await createFavorite(favorite)
-            alert ("Added to favorites!");
+            alert ('Added to favorites!');
         }
         
         //Checks if favorite already exists in favorite list
@@ -83,7 +86,7 @@ ADD PARK TO FAVORITES
             <>
             <h1>{parkInfo.fullName}</h1>
             <p>{parkInfo.description}</p>
-            <img className="parkImg" src={parkInfo.images[0].url} alt={parkInfo.fullName} />
+            <img className='parkImg' src={parkInfo.images[0].url} alt={parkInfo.fullName} />
             <br/>
             <Link to={`/places/${parkInfo.parkCode}`}>Explore places in this park</Link>
             <br/>
