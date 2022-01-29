@@ -4,27 +4,45 @@ import { Link } from 'react-router-dom';
 const FavoritesIndex = (props) => {
 
     const [favorite, setFavorite] = useState([])
-    // const faveUrl = 'https://favorite-parks-p3.herokuapp.com/favorites/'
-    const faveUrl = 'http://localhost:3001/favorites/'
-
-    //GET list of favorites
-    const getFavorites = async () => {
-            const faveResponse = await fetch(faveUrl)
-            const faveData = await faveResponse.json()
-            setFavorite(faveData)
-    }
+    const faveUrl = 'https://favorite-parks-p3.herokuapp.com/favorites/'
+    // const faveUrl = 'http://localhost:3001/favorites/'
 
     //DELETE favorites
     const deleteFavorite = async (id) => {
-        await fetch(faveUrl + id, {
-            method: "DELETE",
+        if(!props.user) return;
+        const token = await props.user.getIdToken();
+       const response = await fetch(faveUrl + id, {
+            method: 'DELETE',
+            headers: {
+                "Authorization": 'Bearer ' + token
+            }
         })
-        getFavorites()
+       const favorites = await response.json();
+       setFavorite(favorites);
+    }
+
+    const handleLogout = () => {
+        setFavorite([])
     }
 
     useEffect(() => {
+        //GET list of favorites
+        const getFavorites = async () => {
+            if(!props.user) return;
+            const token = await props.user.getIdToken();
+            const faveResponse = await fetch(faveUrl, {
+                method: 'GET',
+                headers: {
+                    'Authorization': 'Bearer ' + token
+                }
+            });
+            const faveData = await faveResponse.json()
+            setFavorite(faveData)
+    }
         if(props.user) {
             getFavorites()
+        } else {
+            handleLogout()
         }
     }, [props.user]);
 

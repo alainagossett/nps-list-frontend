@@ -5,6 +5,7 @@ import { auth } from './services/firebase';
 import './App.css';
 import './styles.scss';
 import './index.css';
+import './styles.js'
 
 //Import Components
 import Main from './components/Main';

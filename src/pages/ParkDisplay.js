@@ -31,14 +31,15 @@ ADD PARK TO FAVORITES
             parkDescr: "",
             parkCode: "",
             notes: "",
+            uId: "",
         })
-        const favoriteUrl = 'http://localhost:3001/favorites/'
-        // const favoriteUrl = 'https://favorite-parks-p3.herokuapp.com/favorites/'
+        // const favoriteUrl = 'http://localhost:3001/favorites/'
+        const favoriteUrl = 'https://favorite-parks-p3.herokuapp.com/favorites/'
 
         const createFavorite = async () => {
             if(!props.user) return;
             const token = await props.user.getIdToken();
-            await fetch(favoriteUrl, {
+           const response = await fetch(favoriteUrl, {
                 method: 'POST',
                 headers: {
                     "Content-Type": 'Application/json',
@@ -49,26 +50,42 @@ ADD PARK TO FAVORITES
                         "parkName": park.data[0].fullName,
                         "parkDescr": park.data[0].description,
                         "parkCode": park.data[0].parkCode,
-                        "notes": ""
+                        "notes": "",
+                        "uId": props.user.uid
                     })
                 })
+                const favorites = await response.json();
+                setFavorite(favorites);
         }
 
         const handleClick = async (event) => {
             event.preventDefault()
             await createFavorite(favorite)
             alert ('Added to favorites!');
+            setIsDisabled(true)
         }
         
         //Checks if favorite already exists in favorite list
         //Disables favorite button if park exists
         async function lookupFavorite() {
-            const faves = await fetch(favoriteUrl)
+            if(!props.user) return;
+            const token = await props.user.getIdToken();
+            const faves = await fetch(favoriteUrl, {
+                method: 'GET',
+                headers: {
+                    Authorization: 'Bearer ' + token
+                }
+            })
+
             const faveData = await faves.json(faves)
+            console.log('faveData: ', faveData)
            const found = faveData.find((f) => parkCode === f.parkCode)
+           
            if(found) {
+               console.log('Found')
                setIsDisabled(true)
            } else {
+                console.log('Not found')
                setIsDisabled(false)
            }
         }

@@ -18,10 +18,13 @@ const FavoritePark = (props) => {
         const [ note, setNote ] = useState("")
     
         const updateNotes = async (note) => {
+            if(!props.user) return;
+            const token = await props.user.getIdToken();
             const response = await fetch(url + id, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "Application/json",
+                    "Authorization": 'Bearer ' + token
                 },
                 body: JSON.stringify(note)
             })
