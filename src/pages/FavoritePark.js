@@ -11,8 +11,8 @@ const FavoritePark = (props) => {
         const faves = await fetch(url)
         const faveData = await faves.json(faves)
         const found = faveData.find((f) => id === f._id)
+        console.log(found)
        setPark(found)
-       console.log(props)
     }
 
     //UPDATE PARK NOTE
@@ -24,7 +24,13 @@ const FavoritePark = (props) => {
                 headers: {
                     "Content-Type": "Application/json",
                 },
-                body: JSON.stringify(note)
+                body: JSON.stringify(
+                    {
+                        "parkName": park.parkName,
+                        "parkDescr": park.parkDescr,
+                        "parkCode": park.parkCode,
+                        "notes": note
+                    })
             })
             const parkNote = await response.json();
             setNote(parkNote);
@@ -40,7 +46,7 @@ const FavoritePark = (props) => {
     
         const handleSubmit = (event) => {
             event.preventDefault();
-            updateNotes(note)
+            props.updateNotes(note)
             console.log(note)
         }
 
@@ -55,15 +61,15 @@ const FavoritePark = (props) => {
             <h2>{park.parkName}</h2>
             <p>{park.parkDescr}</p>
             <p>{park.parkCode}</p>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={() => handleSubmit(park._id)}>
                 <input 
                 type="text"
                 name="notes"
                 placeholder="add some notes"
-                value={note.notes}
+                value={note}
                 onChange={handleChange}
                 />
-                <input type="submit" value="Add Notes" />
+                <input type="submit" value="Add Notes"/>
             </form>
         </div>
     )
