@@ -15,39 +15,6 @@ const FavoritesIndex = (props) => {
         console.log(faveData)
     }
 
-    
-
-    //UPDATE favorites
-    // const [ note, setNote ] = useState({
-    //     value: ""
-    // })
-
-    // const updateNotes = async (note, id) => {
-    //     const response = await fetch(faveUrl + id, {
-    //         method: "PUT",
-    //         headers: {
-    //             "Content-Type": "Application/json",
-    //         },
-    //         body: JSON.stringify(note)
-    //     })
-    //     const parkNote = await response.json();
-    //     setNote(parkNote);
-    //     console.log(parkNote)
-    // }
-    
-    // const handleChange = (event) => {
-    //     setNote({
-    //         // ...note,
-    //         [event.target.name]: event.target.value
-    //     });
-    // };
-
-    // const handleSubmit = (event) => {
-    //     event.preventDefault();
-    //     updateNotes(note)
-    //     console.log(note)
-    // }
-
     //DELETE favorites
     const deleteFavorite = async (id) => {
         await fetch(faveUrl + id, {
@@ -62,7 +29,7 @@ const FavoritesIndex = (props) => {
        return favorite.map((f) => (
            <div key={f._id} className='favoriteList'>
                <h2>{f.parkName}</h2>
-               <p>{f.parkDescr}</p>
+               <p>{f.notes}</p>
                <Link to={`/favorites/${f._id}`}
                                 //render a page component to show the park details
                                

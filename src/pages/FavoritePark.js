@@ -3,8 +3,7 @@ import { useState, useEffect } from "react";
 const FavoritePark = (props) => {
     
     const id = props.match.params.id;
-    // const url = 'https://favorite-parks-p3.herokuapp.com/favorites/'
-    const url = 'http://localhost:3001/favorites/';
+    const url = 'https://favorite-parks-p3.herokuapp.com/favorites/'
 
     //GET PARK DATA
     const [park, setPark] = useState([])
@@ -12,7 +11,6 @@ const FavoritePark = (props) => {
         const faves = await fetch(url)
         const faveData = await faves.json(faves)
         const found = faveData.find((f) => id === f._id)
-        console.log("found data: ", found)
        setPark(found)
     }
 
@@ -29,7 +27,7 @@ const FavoritePark = (props) => {
             })
             const parkNote = await response.json();
             setNote(parkNote);
-            console.log(response)
+            alert('Note added!')
         }
         
         const handleChange = (event) => {
@@ -42,7 +40,9 @@ const FavoritePark = (props) => {
         const handleSubmit = (event) => {
             event.preventDefault();
             updateNotes(note)
-            console.log(note)
+            setNote({
+                note: "",
+            })
         }
 
     useEffect(() => {
