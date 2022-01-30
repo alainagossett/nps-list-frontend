@@ -7,20 +7,20 @@ const FavoritePark = (props) => {
 
     //GET PARK DATA
     const [park, setPark] = useState([])
-    // async function lookupFavorite() {
-    //     if(!props.user) return;
-    //     const token = await props.user.getIdToken();
-    //     const faves = await fetch(url, {
-    //         method: 'GET',
-    //         headers: {
-    //             "Authorization": 'Bearer ' + token
-    //         }
-    //     })
-    //     console.log(faves)
-    //     const faveData = await faves.json(faves)
-    //     const found = faveData.find((f) => id === f._id)
-    //    setPark(found)
-    // }
+    async function lookupFavorite() {
+        if(!props.user) return;
+        const token = await props.user.getIdToken();
+        const faves = await fetch(url, {
+            method: 'GET',
+            headers: {
+                "Authorization": 'Bearer ' + token
+            }
+        })
+        console.log(faves)
+        const faveData = await faves.json(faves)
+        const found = faveData.find((f) => id === f._id)
+       setPark(found)
+    }
 
     //UPDATE PARK NOTE
         const [ note, setNote ] = useState("")
@@ -61,20 +61,6 @@ const FavoritePark = (props) => {
     }
 
     useEffect(() => {
-        async function lookupFavorite() {
-            if(!props.user) return;
-            const token = await props.user.getIdToken();
-            const faves = await fetch(url, {
-                method: 'GET',
-                headers: {
-                    "Authorization": 'Bearer ' + token
-                }
-            })
-            const faveData = await faves.json(faves)
-            // const found = faveData.find((f) => id === f._id)
-           setPark(faveData)
-        };
-
         if(props.user) {
             lookupFavorite()
         } else {
@@ -87,7 +73,6 @@ const FavoritePark = (props) => {
             <h1>Park:</h1>
             <h2>{park.parkName}</h2>
             <p>{park.parkDescr}</p>
-            <p>{park.parkCode}</p>
             <form onSubmit={handleSubmit}>
                 <input 
                 type="text"
