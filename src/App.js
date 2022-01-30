@@ -10,6 +10,7 @@ import './styles.js';
 //Import Components
 import Main from './components/Main';
 import Header from './components/Header';
+import Footer from './components/Footer'
 
 //Import Pages
 import PlaceDisplay from './pages/PlaceDisplay.js';
@@ -46,6 +47,7 @@ function App() {
           render={(props) => <FavoritePark {...props} user={user} />}
         />
       </Switch>
+      <Footer />
     </div>
   );
 }

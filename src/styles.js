@@ -36,8 +36,19 @@ export const StyledHeader = styled.header`
 `;
 
 export const StyledFooter = styled.footer`
-  height: 5rem;
+  height: 3rem;
   display: flex;
   justify-content: center;
   align-items: center;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  color: #fff;
+  background-color: #808080;
+  box-shadow: 1px 1px 7px 5px #555555;
+  img {
+      height: 2rem;
+      padding-right: 10px;
+  }
 `;
