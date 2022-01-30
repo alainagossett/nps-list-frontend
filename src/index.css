@@ -10,5 +10,9 @@ body {
   font-family: Helvetica;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url('https://i.imgur.com/ZfTBXDm.jpg') ;
+  background-repeat: no-repeat;
+  background-size: stretch;
+  background-color: #eee;
 }
 

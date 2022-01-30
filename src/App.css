@@ -2,17 +2,6 @@
   text-align: center;
 }
 
-.parks {
-  list-style-type: none;
-  font-size: 18pt;
-  font-weight: bold;
-}
-
-.parks a {
-  text-decoration: none;
-  color: #4B5E26;
-}
-
 .placeImg, .parkImg {
   height: 50%;
   width: 50%;

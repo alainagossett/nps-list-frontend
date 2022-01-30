@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link, Route, Switch, Redirect } from 'react-router-dom';
+import { StyledApp } from '../styles'
 
-import '../App.css';
 import FavoritesIndex from '../pages/FavoritesIndex';
 import ParkDisplay from '../pages/ParkDisplay';
 
@@ -81,7 +81,7 @@ const Main = (props) => {
   ];
 
   return (
-    <main>
+    <StyledApp>
       <Switch>
         <Route path="/favorites">
           <ParkDisplay user={props.user} />
@@ -113,7 +113,7 @@ const Main = (props) => {
       </div>
       {parkState ? (
         <div className="parkList">
-          <ul className="parks">
+          <ul className="parks" style={{maxHeight: '400px', overflow: 'auto'}}>
             {
               //Iterate over list of park codes and generate a list of Link components
               parkState.map((pl) => {
@@ -134,7 +134,7 @@ const Main = (props) => {
       ) : (
         <h1>Search By State!</h1>
       )}
-    </main>
+    </StyledApp>
   );
 };
 

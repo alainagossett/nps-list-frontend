@@ -1,9 +1,33 @@
 import styled from 'styled-components';
 
-// export const StyledLayout = styled.div`
-//     display: flex;
-//     min-height: 100vh;
-// `;
+export const StyledApp = styled.div`
+  justify-content: center;
+  text-align: center;
+  background-color: #101010;
+  opacity: 0.75;
+  margin: 8rem;
+  padding: 3rem;
+  border-radius: 25% 10%;
+  box-shadow: 1px 1px 10px 2px #bbb;
+  .parks {
+    list-style-type: none;
+    font-size: 18pt;
+    font-weight: bold;
+  }
+
+  .parks a {
+    text-decoration: none;
+    color: #fff;
+    &:hover {
+      text-decoration: underline wavy white;
+      cursor: pointer;
+    }
+  }
+
+  h1 {
+      color: #fff;
+  }
+`;
 
 export const StyledHeader = styled.header`
   display: flex;
@@ -48,7 +72,7 @@ export const StyledFooter = styled.footer`
   background-color: #808080;
   box-shadow: 1px 1px 7px 5px #555555;
   img {
-      height: 2rem;
-      padding-right: 10px;
+    height: 2rem;
+    padding-right: 10px;
   }
 `;

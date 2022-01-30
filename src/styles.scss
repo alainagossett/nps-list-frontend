@@ -53,16 +53,16 @@ $deletetext: #000;
 
 div {
   .search {
-    input {
-      @include white-text-green-bg;
-      padding: 10px;
-      font-size: 1.1em;
-      margin: 10px;
+    // input {
+    //   @include white-text-green-bg;
+    //   padding: 10px;
+    //   font-size: 1.1em;
+    //   margin: 10px;
 
-      &[type="submit"]:hover {
-        @include green-text-white-bg;
-      }
-    }
+    //   &[type="submit"]:hover {
+    //     @include green-text-white-bg;
+    //   }
+    // }
   }
   button {
     @include white-text-green-bg;
