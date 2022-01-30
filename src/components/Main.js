@@ -46,7 +46,7 @@ const Main = (props) => {
             )} />
         </Switch>
         <div className='search'>
-            <select name="stateSel" value={inputState} onChange={handleChange}>
+            <select className="stateSel" value={inputState} onChange={handleChange}>
                 <option value="">Select State</option>
                 {
                     statesList.map((s) => {

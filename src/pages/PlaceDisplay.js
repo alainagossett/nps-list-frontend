@@ -37,9 +37,11 @@ async function lookupPlaces() {
                         place.data.map((p) => {
                             return (
                             <div key={p.id}>
+                                <br/>
                             <a href={p.url} target="_blank"><h2>{p.title}</h2></a>
                             <img className='placeImg' src={p.images[0].url} alt={p.title} />
                             <p>{p.audioDescription}</p>
+                            <br/>
                             </div>
                             )
                         })

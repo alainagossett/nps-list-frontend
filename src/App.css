@@ -37,3 +37,17 @@
   height: 50%;
   width: 50%;
 }
+
+.stateSel {
+  height: 25px;
+  width: 200px;
+}
+
+.parkDisplay {
+  display: flex;
+}
+
+.parkName {
+  text-align: center;
+}
+

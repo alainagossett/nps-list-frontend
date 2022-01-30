@@ -103,9 +103,9 @@ ADD PARK TO FAVORITES
         const loaded = () => {
             const parkInfo = park.data[0]
         return (
-            <>
-            <h1>{parkInfo.fullName}</h1>
-            <p>{parkInfo.description}</p>
+            <div className='parkDisplay'>
+            <h1 className='parkName'>{parkInfo.fullName}</h1>
+            <p className='parkDescr'>{parkInfo.description}</p>
             <img className='parkImg' src={parkInfo.images[0].url} alt={parkInfo.fullName} />
             <br/>
             <Link to={`/places/${parkInfo.parkCode}`}>Explore places in this park</Link>
@@ -116,7 +116,7 @@ ADD PARK TO FAVORITES
                 <button disabled={isDisabled} onClick={handleClick}>Add to Favorites</button>
 
             }
-            </>
+            </div>
         )
     }
 
