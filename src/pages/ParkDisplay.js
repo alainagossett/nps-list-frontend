@@ -6,6 +6,8 @@ import '../App.css';
 
 const ParkDisplay = (props) => {
 
+    console.log('props: ', props)
+
 /*/////////////////////////////////
 GET PARK DETAILS TO DISPLAY ON PAGE
 *//////////////////////////////////
@@ -43,7 +45,7 @@ ADD PARK TO FAVORITES
                 method: 'POST',
                 headers: {
                     "Content-Type": 'Application/json',
-                    'Authorization': 'Bearer ' + token
+                    "Authorization": 'Bearer ' + token
                 },
                 body: JSON.stringify(
                     {
@@ -56,6 +58,7 @@ ADD PARK TO FAVORITES
                 })
                 const favorites = await response.json();
                 setFavorite(favorites);
+                console.log(favorites)
         }
 
         const handleClick = async (event) => {

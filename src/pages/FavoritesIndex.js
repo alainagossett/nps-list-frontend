@@ -21,7 +21,7 @@ const FavoritesIndex = (props) => {
        setFavorite(favorites);
     }
 
-    const handleLogout = () => {
+    const handleLogout = async () => {
         setFavorite([])
     }
 
@@ -33,7 +33,7 @@ const FavoritesIndex = (props) => {
             const faveResponse = await fetch(faveUrl, {
                 method: 'GET',
                 headers: {
-                    'Authorization': 'Bearer ' + token
+                    "Authorization": 'Bearer ' + token
                 }
             });
             const faveData = await faveResponse.json()
