@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { StyledParkDisplay } from '../styles';
 
 import '../App.css';
 
@@ -97,16 +98,17 @@ const ParkDisplay = (props) => {
   const loaded = () => {
     const parkInfo = park.data[0];
     return (
-      <div className="parkDisplay">
+      <StyledParkDisplay>
         <h1 className="parkName">{parkInfo.fullName}</h1>
-        <p className="parkDescr">{parkInfo.description}</p>
+        <div>
+        <p className="parkInfo">{parkInfo.description}</p>
         <img
           className="parkImg"
           src={parkInfo.images[0].url}
           alt={parkInfo.fullName}
         />
         <br />
-        <Link to={`/places/${parkInfo.parkCode}`}>
+        <Link to={`/places/${parkInfo.parkCode}`} className='exploreLink'>
           Explore places in this park
         </Link>
         <br />
@@ -116,7 +118,8 @@ const ParkDisplay = (props) => {
             Add to Favorites
           </button>
         )}
-      </div>
+        </div>
+      </StyledParkDisplay>
     );
   };
 

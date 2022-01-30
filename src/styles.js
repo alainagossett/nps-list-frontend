@@ -29,6 +29,41 @@ export const StyledApp = styled.div`
   }
 `;
 
+export const StyledParkDisplay = styled.div`
+    display: flex;
+    margin: 20px;
+    .parkName {
+        text-align: center;
+        color: #111;
+        padding: 1em;
+        text-shadow: 2px 2px 3px #fff;
+    }
+    div {
+        background-color: #fff;
+        opacity: 0.85;
+        border-radius: 50px;
+        position: relative;
+        margin: 20px;
+        padding: 3.5rem;
+        text-align: center;
+        font-weight: bold;
+        box-shadow: 1px 1px 10px 2px #000;
+        img {
+            height: 65%;
+            width: 65%;
+            padding: 10px
+        }
+        .exploreLink {
+            color: #3f4e20;
+            text-decoration: none;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            &:hover {
+                text-decoration: underline wavy #3f4e20;
+            }
+        }
+    }
+`;
+
 export const StyledHeader = styled.header`
   display: flex;
   flex-direction: row;
