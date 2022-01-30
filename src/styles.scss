@@ -29,24 +29,6 @@ $deletetext: #000;
 }
 
 // --------------------------
-// Header
-// --------------------------
-
-// nav {
-//     @include white-text-green-bg;
-//     display: flex;
-//     justify-content: flex-start;
-//     a {
-//         @include white-text-green-bg;
-    
-//         div{
-//             margin: 10px;
-//             font-size: large;
-//         }
-//     }
-// }
-
-// --------------------------
 // Form
 // --------------------------
 
@@ -69,7 +51,7 @@ div {
     padding: 10px;
     font-size: 1.1em;
     margin: 10px;
-
+    border-radius: 15px;
     &:hover{
         @include green-text-white-bg;
     }

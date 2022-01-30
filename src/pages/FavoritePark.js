@@ -15,7 +15,6 @@ const FavoritePark = (props) => {
         Authorization: 'Bearer ' + token,
       },
     });
-    console.log(faves);
     const faveData = await faves.json(faves);
     const found = faveData.find((f) => id === f._id);
     setPark(found);
