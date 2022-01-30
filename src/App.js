@@ -5,11 +5,11 @@ import { auth } from './services/firebase';
 import './App.css';
 import './styles.scss';
 import './index.css';
-import './styles.js'
+import './styles.js';
 
 //Import Components
 import Main from './components/Main';
-import Header from './components/Header'
+import Header from './components/Header';
 
 //Import Pages
 import PlaceDisplay from './pages/PlaceDisplay.js';
@@ -17,27 +17,34 @@ import ParkDisplay from './pages/ParkDisplay';
 import FavoritesIndex from './pages/FavoritesIndex';
 import FavoritePark from './pages/FavoritePark';
 
-
 function App() {
-
-    const [user, setUser] = useState(null);
-    useEffect(() => {
-      auth.onAuthStateChanged(user => setUser(user));
-    }, []);
+  const [user, setUser] = useState(null);
+  useEffect(() => {
+    auth.onAuthStateChanged((user) => setUser(user));
+  }, []);
 
   return (
     <div className="App">
       <Header user={user} />
       <Switch>
-      <Route exact path='/parks'>
-      <Main user={user} />
-      </Route>
-      <Route path='/parks/:code' render={(props) => <ParkDisplay {...props} user={user} />} />
-      <Route path='/places/:code' render={(props) => <PlaceDisplay {...props}/>} />
-      <Route exact path='/favorites'>
-        <FavoritesIndex user={user}/>
-      </Route>
-      <Route path='/favorites/:id' render={(props) => <FavoritePark {...props} user={user}/>} />
+        <Route exact path="/parks">
+          <Main user={user} />
+        </Route>
+        <Route
+          path="/parks/:code"
+          render={(props) => <ParkDisplay {...props} user={user} />}
+        />
+        <Route
+          path="/places/:code"
+          render={(props) => <PlaceDisplay {...props} />}
+        />
+        <Route exact path="/favorites">
+          <FavoritesIndex user={user} />
+        </Route>
+        <Route
+          path="/favorites/:id"
+          render={(props) => <FavoritePark {...props} user={user} />}
+        />
       </Switch>
       {/* <ParkDisplay /> */}
     </div>
