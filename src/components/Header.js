@@ -8,19 +8,15 @@ function Header(props) {
                 <div>Search Parks</div>
             </Link>
             <Link to="/favorites">
-                <div>Favorite</div>
+                <div>Favorites</div>
             </Link>
             {
                 props.user ? 
-                <>
-                <img style={{
-                    height: '3.125rem',
-                    width: '3.125rem',
-                    borderRadius: '50%'
-                }} src={props.user.photoURL} 
+                <div className='userLogin'>
+                <img className="userImg" src={props.user.photoURL} 
                     alt={props.user.displayName} />
                 <button onClick={logout}>Logout</button>
-                </>
+                </div>
                 :
                 <button onClick={login}>Login</button>
             }
