@@ -2,26 +2,6 @@
   text-align: center;
 }
 
-.nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-}
-
-.nav a {
-  text-decoration: none;
-}
-
-.userImg {
-  height: 3.15rem;
-  width: 3.15rem;
-  border-radius: 50%;
-}
-
-.userLogin {
-  display: flex;
-}
-
 .parks {
   list-style-type: none;
   font-size: 18pt;

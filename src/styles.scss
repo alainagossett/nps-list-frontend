@@ -32,20 +32,19 @@ $deletetext: #000;
 // Header
 // --------------------------
 
-nav {
-    @include white-text-green-bg;
-    display: flex;
-    justify-content: flex-start;
-
-    a {
-        @include white-text-green-bg;
+// nav {
+//     @include white-text-green-bg;
+//     display: flex;
+//     justify-content: flex-start;
+//     a {
+//         @include white-text-green-bg;
     
-        div{
-            margin: 10px;
-            font-size: large;
-        }
-    }
-}
+//         div{
+//             margin: 10px;
+//             font-size: large;
+//         }
+//     }
+// }
 
 // --------------------------
 // Form

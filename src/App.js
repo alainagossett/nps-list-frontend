@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { auth } from './services/firebase';
 
-import './App.css';
+// import './App.css';
 import './styles.scss';
 import './index.css';
 import './styles.js';
@@ -24,7 +24,7 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
+    <div>
       <Header user={user} />
       <Switch>
         <Route exact path="/parks">
@@ -46,7 +46,6 @@ function App() {
           render={(props) => <FavoritePark {...props} user={user} />}
         />
       </Switch>
-      {/* <ParkDisplay /> */}
     </div>
   );
 }

@@ -1,15 +1,18 @@
 import { Link } from 'react-router-dom';
 import { login, logout } from '../services/firebase';
+import { StyledHeader } from '../styles'
 
 function Header(props) {
   return (
-    <nav className="nav">
+    <StyledHeader>
+        <div className='navLinks'>
       <Link to="/parks">
         <div>Search Parks</div>
       </Link>
       <Link to="/favorites">
         <div>Favorites</div>
       </Link>
+        </div>
       {props.user ? (
         <div className="userLogin">
           <img
@@ -22,7 +25,7 @@ function Header(props) {
       ) : (
         <button onClick={login}>Login</button>
       )}
-    </nav>
+    </StyledHeader>
   );
 }
 
