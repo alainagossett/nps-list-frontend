@@ -16,24 +16,26 @@ A React based app to assist National Parks enthusiasts plan their next trip. Thi
 
 ## Project Planning  
 ### Wireframes
-![Wireframe 1]()  
-![Wireframe 2]()  
-![Wireframe 3]()  
+![Wireframe 1](https://i.imgur.com/VMDc2QD.png)  
+![Wireframe 2](https://i.imgur.com/DDtXr3T.png)  
+![Wireframe 3](https://i.imgur.com/qkAgr4x.png)  
 
 ### Trello Board
 [Trello](https://trello.com/b/7NZfSAei/parks-project)  
 
 ## Screenshots
 ### Deployed App
-![Screenshot 1]()  
-![Screenshot 2]()  
-![Screenshot 3]()  
+![Screenshot 1](https://i.imgur.com/cIwQpaq.png)  
+![Screenshot 2](https://i.imgur.com/XOn3bwP.png)  
+![Screenshot 3](https://i.imgur.com/IdNQZ91.png)  
+![Screenshot 4](https://i.imgur.com/fxCxnCi.png)
 
 ## Getting Started
-[Click Here]() to go to the app  
-1. You'll need to log in first  
+[Click Here](https://national-parks-planner.netlify.app/) to go to the app  
+1. You can browse parks by clicking Search Parks in the header  
 2. Search for a park using the state abbreviation  
 3. Click into the results to see details about the park and additional places within that park  
+4. To use the Favorites functionality, you'll need to sign in to a Google account  
 
 ## Next Steps
 * Add another list for Completed/Visited parks
