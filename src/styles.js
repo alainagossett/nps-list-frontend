@@ -43,7 +43,7 @@ export const StyledParkDisplay = styled.div`
     }
     div {
         background-color: #fff;
-        opacity: 0.85;
+        opacity: 0.95;
         border-radius: 50px;
         position: relative;
         margin: 20px;
@@ -114,9 +114,8 @@ export const StyledFavoritesIndex = styled.div`
     flex-wrap: wrap;
     justify-content: center;
     text-align: center;
-    background-color: #fff;
     margin: 20px auto;
-    width: 200px;
+    width: 100%;
     h2 {
         font-size: 1.5rem;
     }
@@ -125,18 +124,49 @@ export const StyledFavoritesIndex = styled.div`
         padding: 1em;
     }
     .favoriteList {
+       background-color: #fff;
        padding: 2rem;
+       margin: 2rem;
        box-shadow: 1px 1px 10px 2px #000;
-       position: relative;
+       max-width: 300px;
     }
     .favoritesNotes {
         text-decoration: none;
         color: #3f4e20;
         font-weight: bold;
         &:hover {
-      text-decoration: underline wavy #3f4e20;
-      cursor: pointer;
+            text-decoration: underline wavy #3f4e20;
+            cursor: pointer;
+        }
     }
+`;
+
+export const StyledFavoritePark = styled.div`
+    background-color: white;
+    margin: 2rem;
+    padding: 2rem;
+    width: 50%;
+    box-shadow: 1px 1px 10px 2px #000;
+    p {
+        margin: 2rem;
+    }
+    form {
+        text-align: center;
+    }
+    input.notes {
+        width: 100%;
+    }
+    input.submitbtn {
+        margin: 1rem;
+        color: white;
+        background-color: #3f4e20;
+        width: fit-content;
+        height: 40px;
+        border-radius: 15px;
+        &:hover {
+            color: #3f4e20;
+            background-color: white;
+        }
     }
 `;
 

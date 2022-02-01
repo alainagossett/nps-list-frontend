@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react';
+import { Redirect } from 'react-router-dom';
+import { StyledFavoritePark } from '../styles';
 
 const FavoritePark = (props) => {
   const id = props.match.params.id;
@@ -67,9 +69,9 @@ const FavoritePark = (props) => {
   }, [props.user]);
 
   return (
-    <div>
-      <h1>Park:</h1>
-      <h2>{park.parkName}</h2>
+      <StyledFavoritePark>
+    <div className='favorite'>
+      <h1>{park.parkName}</h1>
       <p>{park.parkDescr}</p>
       <p>Added: {park.createdAt}</p>
       <form onSubmit={handleSubmit}>
@@ -79,10 +81,12 @@ const FavoritePark = (props) => {
           placeholder="add some notes"
           value={note.note}
           onChange={handleChange}
+          className='notes'
         />
-        <input type="submit" value="Add Notes" />
+        <input type="submit" value="Add Notes" className='submitbtn'/>
       </form>
     </div>
+    </StyledFavoritePark>
   );
 };
 
