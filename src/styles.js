@@ -14,7 +14,10 @@ export const StyledApp = styled.div`
     font-size: 18pt;
     font-weight: bold;
   }
-
+  .stateSel {
+  height: 25px;
+  width: 200px;
+}
   .parks a {
     text-decoration: none;
     color: #fff;
@@ -64,6 +67,49 @@ export const StyledParkDisplay = styled.div`
     }
 `;
 
+export const StyledPlaceDisplay = styled.div`
+    display: flex;
+    margin: 20px;
+    .title {
+        text-align: center;
+        color: #111;
+        padding: 1em;
+        text-shadow: 2px 2px 3px #fff;
+    }
+    .backbtn {
+        font-size: 16pt;
+        text-decoration: none;
+        color: #333f1a;
+    }
+    .placesResults {
+        background-color: #fff;
+        opacity: 0.85;
+        border-radius: 20px;
+        position: relative;
+        margin: 20px;
+        padding: 3.5rem;
+        text-align: center;
+        font-weight: bold;
+        box-shadow: 1px 1px 10px 2px #000;
+        a {
+            text-decoration: none;
+            color: #3f4e20;
+        }
+    }
+    .placeDetails {
+        border: 1px dashed black;
+        margin: 2rem;
+        padding: 2rem;
+        /* border-radius: 20px; */
+    }
+    .placeImg {
+            height: 65%;
+            width: 65%;
+            padding: 10px;
+            
+        }
+`;
+
 export const StyledHeader = styled.header`
   display: flex;
   flex-direction: row;
@@ -99,7 +145,7 @@ export const StyledFooter = styled.footer`
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;
+  position: fixed;
   left: 0;
   bottom: 0;
   right: 0;

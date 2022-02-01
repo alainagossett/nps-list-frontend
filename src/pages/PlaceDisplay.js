@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { StyledPlaceDisplay } from '../styles';
 
 import '../App.css';
 
@@ -27,15 +28,14 @@ function PlaceDisplay(props) {
 
   const loaded = () => {
     return (
-      <div className="placesShow">
-        <Link to={`/parks/${props.match.params.code}`}>Back</Link>
-        <h1>Places to see in this park</h1>
+      <StyledPlaceDisplay>
+        <Link to={`/parks/${props.match.params.code}`} className="backbtn">&#11013;Back</Link>
+        <h1 className='title'>Places to see in this park</h1>
         {place.total !== '0' ? (
-          <div>
+          <div className='placesResults'>
             {place.data.map((p) => {
               return (
-                <div key={p.id}>
-                  <br />
+                <div key={p.id} className='placeDetails'>
                   <a href={p.url} rel="noopener noreferrer">
                     <h2>{p.title}</h2>
                   </a>
@@ -53,7 +53,7 @@ function PlaceDisplay(props) {
         ) : (
           <p>No park details to display at this time</p>
         )}
-      </div>
+      </StyledPlaceDisplay>
     );
   };
 
