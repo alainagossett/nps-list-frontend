@@ -106,7 +106,6 @@ export const StyledPlaceDisplay = styled.div`
             height: 65%;
             width: 65%;
             padding: 10px;
-            
         }
 `;
 

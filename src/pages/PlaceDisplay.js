@@ -37,14 +37,14 @@ function PlaceDisplay(props) {
               return (
                 <div key={p.id} className='placeDetails'>
                   <a href={p.url} rel="noopener noreferrer">
-                    <h2>{p.title}</h2>
+                    <h2 className='placeName'>{p.title}</h2>
                   </a>
                   <img
                     className="placeImg"
                     src={p.images[0].url}
                     alt={p.title}
                   />
-                  <p>{p.audioDescription}</p>
+                  <p className='placeDescr'>{p.audioDescription}</p>
                   <br />
                 </div>
               );
