@@ -36,7 +36,7 @@ function PlaceDisplay(props) {
               return (
                 <div key={p.id}>
                   <br />
-                  <a href={p.url} target="_blank">
+                  <a href={p.url} rel="noopener noreferrer">
                     <h2>{p.title}</h2>
                   </a>
                   <img
