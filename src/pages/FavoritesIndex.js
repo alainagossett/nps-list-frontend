@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { StyledFavoritesIndex } from '../styles';
 
 const FavoritesIndex = (props) => {
   const [favorite, setFavorite] = useState([]);
@@ -48,23 +49,27 @@ const FavoritesIndex = (props) => {
   const loaded = () => {
     if (props.user) {
       return favorite.map((f) => (
+          <StyledFavoritesIndex>
         <div key={f._id} className="favoriteList">
           <h2>{f.parkName}</h2>
           <p>{f.notes}</p>
           <Link
             to={`/favorites/${f._id}`}
             //render a page component to show the park details
+            className='favoritesNotes'
           >
-            Details
+            Add Notes
           </Link>
           <button className="deleteBtn" onClick={() => deleteFavorite(f._id)}>
             DELETE
           </button>
         </div>
+        </StyledFavoritesIndex>
       ));
     } else {
-      return <h1>You must be logged in to view favorites</h1>;
+      return <h1 style={{textAlign:'center', margin:'2em'}}>You must be logged in to view favorites</h1>;
     }
+    
   };
 
   const loading = () => {

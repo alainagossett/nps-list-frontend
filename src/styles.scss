@@ -6,7 +6,6 @@ $contrastcolor: white;
 $disabledcolor: gray;
 $disabledtext: #5c5c5c;
 $deletecolor: #b41a1a;
-$deletetext: #000;
 
 @mixin white-text-green-bg {
     color: $contrastcolor;
@@ -23,8 +22,8 @@ $deletetext: #000;
     background-color: $disabledcolor
 }
 
-@mixin black-text-red-bg {
-    color: $deletetext;
+@mixin white-text-red-bg {
+    color: $contrastcolor;
     background-color: $deletecolor;
 }
 
@@ -66,8 +65,9 @@ div {
 }
 
 .deleteBtn {
-    @include black-text-red-bg;
+    @include white-text-red-bg;
     border-radius: 20%;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 10pt;
+    font-weight: bold;
 }

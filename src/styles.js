@@ -109,6 +109,37 @@ export const StyledPlaceDisplay = styled.div`
         }
 `;
 
+export const StyledFavoritesIndex = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+    background-color: #fff;
+    margin: 20px auto;
+    width: 200px;
+    h2 {
+        font-size: 1.5rem;
+    }
+    p {
+        font-size: 1rem;
+        padding: 1em;
+    }
+    .favoriteList {
+       padding: 2rem;
+       box-shadow: 1px 1px 10px 2px #000;
+       position: relative;
+    }
+    .favoritesNotes {
+        text-decoration: none;
+        color: #3f4e20;
+        font-weight: bold;
+        &:hover {
+      text-decoration: underline wavy #3f4e20;
+      cursor: pointer;
+    }
+    }
+`;
+
 export const StyledHeader = styled.header`
   display: flex;
   flex-direction: row;
