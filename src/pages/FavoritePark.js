@@ -74,6 +74,7 @@ const FavoritePark = (props) => {
       <h1>{park.parkName}</h1>
       <p>{park.parkDescr}</p>
       <p>Added: {park.createdAt}</p>
+      <p>User Notes: {park.notes}</p>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
