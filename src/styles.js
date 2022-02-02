@@ -30,6 +30,27 @@ export const StyledApp = styled.div`
   h1 {
       color: #fff;
   }
+
+  @media screen and (max-width: 375px) {
+        width: 50%;
+        .stateSel {
+            width: fit-content;
+        }
+        .parks {
+            font-size: 0.8rem;
+            text-align: center;
+        }
+    }
+    @media screen and (max-width: 414px) {
+        width: 50%;
+        .stateSel {
+            width: fit-content;
+        }
+        .parks {
+            font-size: 0.8rem;
+            text-align: center;
+        }
+    }
 `;
 
 export const StyledParkDisplay = styled.div`
