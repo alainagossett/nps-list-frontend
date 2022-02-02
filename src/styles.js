@@ -86,6 +86,50 @@ export const StyledParkDisplay = styled.div`
             }
         }
     }
+    @media screen and (max-width: 375px) {
+        display: block;
+        justify-content: center;
+        width: 50%;
+        margin: 5rem;
+        .parkName {
+        text-align: center;
+        color: #111;
+        padding: 0.1rem;
+        text-shadow: 2px 2px 3px #fff;
+        background-color: #fff;
+        box-shadow: 1px 1px 10px 2px #000;
+        }
+        div {
+            width: 100%;
+            font-size: 0.7rem;
+            padding: 20px;
+            margin: 0px;
+            margin-top: 10px;
+            border-radius: 0px;
+        }
+        
+    }
+    @media screen and (max-width: 414px) {
+        display: block;
+        justify-content: center;
+        margin: 5rem;
+        .parkName {
+        text-align: center;
+        color: #111;
+        padding: 0.1rem;
+        text-shadow: 2px 2px 3px #fff;
+        background-color: #fff;
+        box-shadow: 1px 1px 10px 2px #000;
+        }
+        div {
+            width: 100%;
+            font-size: 0.7rem;
+            padding: 20px;
+            margin: 0px;
+            margin-top: 10px;
+            border-radius: 0px;
+        }
+    }
 `;
 
 export const StyledPlaceDisplay = styled.div`
