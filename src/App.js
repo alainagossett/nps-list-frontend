@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { auth } from './services/firebase';
 
-// import './App.css';
 import './styles.scss';
 import './index.css';
 import './styles.js';
@@ -10,7 +9,7 @@ import './styles.js';
 //Import Components
 import Main from './components/Main';
 import Header from './components/Header';
-import Footer from './components/Footer'
+import Footer from './components/Footer';
 
 //Import Pages
 import PlaceDisplay from './pages/PlaceDisplay.js';
@@ -21,7 +20,10 @@ import FavoritePark from './pages/FavoritePark';
 function App() {
   const [user, setUser] = useState(null);
   useEffect(() => {
-    auth.onAuthStateChanged((user) => setUser(user));
+    const unsubscribe = auth.onAuthStateChanged((user) => setUser(user));
+        return () => {
+          unsubscribe();
+        }
   }, []);
 
   return (
