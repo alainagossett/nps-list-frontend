@@ -5,7 +5,6 @@ import { StyledFavoritesIndex } from '../styles';
 const FavoritesIndex = (props) => {
   const [favorite, setFavorite] = useState([]);
   const faveUrl = 'https://favorite-parks-p3.herokuapp.com/favorites/';
-  // const faveUrl = 'http://localhost:3001/favorites/'
 
   //DELETE favorites
   const deleteFavorite = async (id) => {

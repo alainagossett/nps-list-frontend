@@ -17,11 +17,9 @@ const providerGoogle = new firebase.auth.GoogleAuthProvider();
 providerGoogle.setCustomParameters({
   prompt: 'select_account',
 });
-//   const providerEmail = new firebase.auth.EmailAuthProvider();
 
 function login() {
   return auth.signInWithPopup(providerGoogle);
-  // auth.signInWithPopup(providerEmail)
 }
 
 function logout() {

@@ -12,7 +12,6 @@ const ParkDisplay = (props) => {
   const [park, setPark] = useState(null);
   //invoke useState to store the parkCode value
   const parkCode = props.match.params.code;
-  // const parkUrl = 'http://localhost:3001/parks/'
   const parkUrl = 'https://favorite-parks-p3.herokuapp.com/parks/';
 
   async function lookupPark() {
@@ -31,7 +30,6 @@ const ParkDisplay = (props) => {
     notes: '',
     uId: '',
   });
-  // const favoriteUrl = 'http://localhost:3001/favorites/'
   const favoriteUrl = 'https://favorite-parks-p3.herokuapp.com/favorites/';
 
   const createFavorite = async () => {

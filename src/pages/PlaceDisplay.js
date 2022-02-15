@@ -8,7 +8,6 @@ function PlaceDisplay(props) {
   const [place, setPlace] = useState(null);
   //invoke useState to store the parkCode value
   const parkCode = props.match.params.code;
-  // const URL = 'http://localhost:3001/places/'
   const URL = 'https://favorite-parks-p3.herokuapp.com/places/';
 
   //GET Place Details
